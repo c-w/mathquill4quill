@@ -1,5 +1,7 @@
 # MathQuill 4 Quill #
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 ## What's this? ##
 
 This module adds support for rich math authoring to the
