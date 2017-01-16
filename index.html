@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Demo</title>
+
+    <!-- KaTeX dependency -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css" integrity="sha384-wE+lCONuEo/QSfLb4AfrSk7HjWJtc4Xc1OiB2/aDBzHzjnlBP4SX7vjErTcwlA8C" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js" integrity="sha384-tdtuPw3yx/rnUGmnLNWXtfjb9fpmwexsd+lr6HUYnUY4B7JhB5Ty7a1mYd+kto/s" crossorigin="anonymous"></script>
+
+    <!-- Quill dependency -->
+    <link href="https://cdn.quilljs.com/1.1.10/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.1.10/quill.js"></script>
+
+    <!-- MathQuill dependency -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="lib/mathquill.css">
+    <script src="lib/mathquill.min.js"></script>
+
+    <!-- mathquill4quill include -->
+    <script src="mathquill4quill.js"></script>
+  </head>
+  <body style="width:400px;height:200px;margin:100px auto;">
+    <div id="editor"></div>
+
+    <script>
+      var quill = new Quill("#editor", {
+        modules: {
+	  formula: true,
+	  toolbar: [["bold", "italic", "underline", "formula"]]
+	},
+	placeholder: "Type text here, or click on the formula button to enter math.",
+        theme: "snow"
+      });
+
+      quill.enableMathQuillFormulaAuthoring();
+    </script>
+  </body>
+</html>
