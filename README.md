@@ -3,7 +3,7 @@
 ## What's this? ##
 
 This module adds support for rich math authoring to the
-[Quill](http://quilljs.com/) editor.
+[Quill](http://quilljs.com/) editor. [Live demo](https://c-w.github.io/mathquill4quill/)
 
 ## Usage example ##
 
