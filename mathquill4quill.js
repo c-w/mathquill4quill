@@ -101,13 +101,16 @@
     });
 
     //add handler to toolbar to fix functionality in safari
-    var toolbar = this.getModule("toolbar");
-    toolbar.addHandler("formula", function() {
-      var inputBox = document.getElementsByClassName("ql-tooltip")[0];
-      inputBox.setAttribute("data-mode", "formula");
-      inputBox.className += " ql-editing ql-flip";
-      inputBox.classList.remove("ql-hidden");
-    });
+    if(Boolean(window.safari))
+    {
+      var toolbar = this.getModule("toolbar");
+      toolbar.addHandler("formula", function() {
+        var inputBox = document.getElementsByClassName("ql-tooltip")[0];
+        inputBox.setAttribute("data-mode", "formula");
+        inputBox.className += " ql-editing ql-flip";
+        inputBox.classList.remove("ql-hidden");
+      });
+    }
   };
 
 })(window.Quill, window.MathQuill);
