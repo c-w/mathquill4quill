@@ -1,8 +1,8 @@
-# MathQuill 4 Quill #
+# MathQuill 4 Quill
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://github.com/c-w/mathquill4quill/blob/master/LICENSE.txt)
 
-## What's this? ##
+## What's this?
 
 This module adds support for rich math authoring to the
 [Quill](http://quilljs.com/) editor.
@@ -11,7 +11,7 @@ This module adds support for rich math authoring to the
 
 [Live demo](https://c-w.github.io/mathquill4quill/)
 
-## Usage example ##
+## Usage example
 
 This module depends on
 [MathQuill](http://docs.mathquill.com/en/latest/Getting_Started/),
@@ -41,4 +41,3 @@ Last step: replace Quill's native formula authoring with MathQuill.
 
 quill.enableMathQuillFormulaAuthoring();
 ```
-
