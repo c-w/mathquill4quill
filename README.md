@@ -22,7 +22,7 @@ adding a reference to [mathquill4quill.js](https://github.com/c-w/mathquill4quil
 
 Next, initialize your Quill object and load the formula module:
 
-```js
+```javascript
 // setup quill with formula support
 
 var quill = new Quill('#editor', {
@@ -36,8 +36,18 @@ var quill = new Quill('#editor', {
 
 Last step: replace Quill's native formula authoring with MathQuill.
 
-```js
+```javascript
 // enable mathquill formula editor
 
 quill.enableMathQuillFormulaAuthoring();
 ```
+
+You can also add in operator buttons(buttons that allow users not familiar with latex to add in operators/functions like square roots) to the editor by passing an `operators` variable to the `enableMathQuillFormulaAuthoring()` function. Example:
+
+```javascript
+quill.enableMathQuillFormulaAuthoring({
+    operators:[["\\sqrt[n]{x}","\\nthroot"]]
+});
+```
+
+The operators variable is an array of arrays. The outside array contains all of the different arrays which describe the operator buttons. The arrays inside of the main array consist of two values. The first value is the latex that gets rendered as the value on the button, and the second value is the latex that gets inserted into the MathQuill editor. 
