@@ -57,8 +57,7 @@
     katex.render(displayOperator, button, {
       throwOnError: false
     });
-    button.onclick = function()
-    {
+    button.onclick = function() {
       mathquill.cmd(operator);
       mathquill.focus();
     }
@@ -87,8 +86,7 @@
       }
     });
 
-    if(options && options.operators)
-    {
+    if (options && options.operators) {
       latexInput.parentNode.appendChild(document.createElement("br"));
       options.operators.forEach(function(element) {
         latexInput.parentNode.appendChild(getOperatorButton(element[0], element[1], mqField));
@@ -101,8 +99,7 @@
     });
 
     //add handler to toolbar to fix functionality in safari
-    if(Boolean(window.safari))
-    {
+    if (Boolean(window.safari)) {
       var toolbar = this.getModule("toolbar");
       toolbar.addHandler("formula", function() {
         var inputBox = document.getElementsByClassName("ql-tooltip")[0];
