@@ -26,15 +26,20 @@
     <script>
       var quill = new Quill("#editor", {
         modules: {
-	        formula: true,
-	        toolbar: [["bold", "italic", "underline", "formula"]]
-	      },
+          formula: true,
+          toolbar: [["bold", "italic", "underline", "formula"]]
+        },
         placeholder: "Type text here, or click on the formula button to enter math.",
         theme: "snow"
       });
 
       quill.enableMathQuillFormulaAuthoring({
-        operators:[["\\pm","\\pm"],["\\sqrt{x}","\\sqrt"],["\\sqrt[n]{x}","\\nthroot"],["\\frac{x}{y}","\\frac"]]
+        operators: [
+          ["\\pm", "\\pm"],
+          ["\\sqrt{x}", "\\sqrt"],
+          ["\\sqrt[n]{x}", "\\nthroot"],
+          ["\\frac{x}{y}", "\\frac"]
+        ]
       });
     </script>
   </body>
