@@ -1,0 +1,5 @@
+{
+    "scripts": {
+        "build":"uglifyjs --compress --mangle -- mathquill4quill.js > mathquill4quill.min.js"
+    }
+}
