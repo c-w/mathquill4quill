@@ -7,7 +7,7 @@
 This module adds support for rich math authoring to the
 [Quill](http://quilljs.com/) editor.
 
-<img src="./screenshots/demo.png" width="450" alt="Demo screenshot">
+<img src="./demos/demo.gif" width="450" alt="Basic demo of mathquill4quill">
 
 [Live demo](https://c-w.github.io/mathquill4quill/)
 
@@ -48,10 +48,10 @@ You can also add in operator buttons (buttons that allow users not familiar with
 
 ```javascript
 quill.enableMathQuillFormulaAuthoring({
-    operators: [["\\sqrt[n]{x}", "\\nthroot"]]
+    operators: [["\\sqrt[n]{x}", "\\nthroot"], ["\\frac{x}{y}","\\frac"]]
 });
 ```
 
 The operators variable is an array of arrays. The outside array contains all of the different arrays which describe the operator buttons. The arrays inside of the main array consist of two values. The first value is the latex that gets rendered as the value on the button, and the second value is the latex that gets inserted into the MathQuill editor.
 
-<img src="./screenshots/custom-operator-buttons.png" width="450" alt="Demo screenshot with custom operator buttons">
+<img src="./demos/demo-custom-operator-buttons.gif" width="450" alt="Demo of mathquill4quill with custom operator buttons">
