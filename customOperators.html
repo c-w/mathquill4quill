@@ -22,7 +22,7 @@
   </head>
   <body style="width:400px;height:200px;margin:100px auto;">
     <div id="editor"></div>
-    <span>Click <a href="./customOperators.html">here</a> to view an editor with operator buttons for a more streamlined WYSIWYG experience</span>
+    <span>Click <a href="./index.html">here</a> to view an editor without operator buttons</span>
     <script>
       var quill = new Quill("#editor", {
         modules: {
@@ -33,7 +33,9 @@
         theme: "snow"
       });
 
-      quill.enableMathQuillFormulaAuthoring();
+      quill.enableMathQuillFormulaAuthoring({
+        operators:[["\\pm","\\pm"],["\\sqrt{x}","\\sqrt"],["\\sqrt[n]{x}","\\nthroot"],["\\frac{x}{y}","\\frac"]]
+      });
     </script>
   </body>
 </html>
