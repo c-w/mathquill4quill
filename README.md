@@ -7,7 +7,7 @@
 This module adds support for rich math authoring to the
 [Quill](http://quilljs.com/) editor.
 
-<a href="https://c-w.github.io/mathquill4quill/"><img src="https://c-w.github.io/mathquill4quill/screenshot.png" width="450" alt="Screenshot"></a>
+<img src="./screenshots/demo.png" width="450" alt="Demo screenshot">
 
 [Live demo](https://c-w.github.io/mathquill4quill/)
 
@@ -42,12 +42,16 @@ Last step: replace Quill's native formula authoring with MathQuill.
 quill.enableMathQuillFormulaAuthoring();
 ```
 
-You can also add in operator buttons(buttons that allow users not familiar with latex to add in operators/functions like square roots) to the editor by passing an `operators` variable to the `enableMathQuillFormulaAuthoring()` function. Example:
+### Custom operator buttons
+
+You can also add in operator buttons (buttons that allow users not familiar with latex to add in operators/functions like square roots) to the editor by passing an `operators` variable to the `enableMathQuillFormulaAuthoring()` function. Example:
 
 ```javascript
 quill.enableMathQuillFormulaAuthoring({
-    operators:[["\\sqrt[n]{x}","\\nthroot"]]
+    operators: [["\\sqrt[n]{x}", "\\nthroot"]]
 });
 ```
 
-The operators variable is an array of arrays. The outside array contains all of the different arrays which describe the operator buttons. The arrays inside of the main array consist of two values. The first value is the latex that gets rendered as the value on the button, and the second value is the latex that gets inserted into the MathQuill editor. 
+The operators variable is an array of arrays. The outside array contains all of the different arrays which describe the operator buttons. The arrays inside of the main array consist of two values. The first value is the latex that gets rendered as the value on the button, and the second value is the latex that gets inserted into the MathQuill editor.
+
+<img src="./screenshots/custom-operator-buttons.png" width="450" alt="Demo screenshot with custom operator buttons">
