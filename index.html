@@ -22,18 +22,54 @@
   </head>
   <body style="width:400px;height:200px;margin:100px auto;">
     <div id="editor"></div>
-    <span>Click <a href="./customOperators.html">here</a> to view an editor with operator buttons for a more streamlined WYSIWYG experience</span>
+
+    <label style="padding-top:0.5em;display:block;">
+      Use custom operator buttons:
+      <input
+        type="checkbox"
+        class="option"
+        data-name="operators"
+        data-value='[["\\pm","\\pm"],["\\sqrt{x}","\\sqrt"],["\\sqrt[n]{x}","\\nthroot"],["\\frac{x}{y}","\\frac"]]'>
+    </label>
+
     <script>
-      var quill = new Quill("#editor", {
+      var quillOptions = {
         modules: {
           formula: true,
           toolbar: [["bold", "italic", "underline", "formula"]]
         },
         placeholder: "Type text here, or click on the formula button to enter math.",
         theme: "snow"
+      };
+
+      var options = {};
+
+      $("input[type='checkbox'].option").each(function() {
+        var $option = $(this);
+        var name = $option.attr("data-name");
+        var isOptionEnabled = window.location.href.indexOf("&" + name + "=true") !== -1;
+
+        if (isOptionEnabled) {
+          $option.prop("checked", true);
+          options[name] = JSON.parse($option.attr("data-value"));
+        }
+
+        $option.change(function(event) {
+          var url = window.location.href;
+          var checked = event.target.checked;
+
+          if (url.indexOf("?") === -1) {
+            url += "?";
+          }
+
+          url = url.replace("&" + name + "=" + !checked, "");
+          url += "&" + name + "=" + checked;
+
+          window.location.href = url;
+        });
       });
 
-      quill.enableMathQuillFormulaAuthoring();
+      new Quill("#editor", quillOptions).enableMathQuillFormulaAuthoring(options);
     </script>
   </body>
 </html>
