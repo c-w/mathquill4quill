@@ -1,5 +1,8 @@
 {
     "scripts": {
-        "build":"uglifyjs --compress --mangle -- mathquill4quill.js > mathquill4quill.min.js"
+        "build": "uglifyjs --compress --mangle -- mathquill4quill.js > mathquill4quill.min.js"
+    },
+    "devDependencies": {
+        "uglifyjs": "^2.4.11"
     }
 }
