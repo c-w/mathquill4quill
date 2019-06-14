@@ -81,10 +81,10 @@
 
     // replace LaTeX formula input with MathQuill input
     var latexInput = getTooltipLatexFormulaInput(this);
-    latexInput.setAttribute("style","visiblity:hidden;padding:0px;border:0px;width:0px;");
     var mqInput = document.createElement("span");
     applyInputStyles(mqInput);
     insertAfter(mqInput, latexInput);
+    latexInput.setAttribute("style","visibility:hidden;padding:0px;border:0px;width:0px;");
 
     // synchronize MathQuill input and LaTeX formula input
     var mqField = MathQuill.getInterface(2).MathField(mqInput, {
