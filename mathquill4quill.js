@@ -1,4 +1,4 @@
-(function(Quill, MathQuill) {
+(function(Quill, MathQuill, katex) {
 
   function insertAfter(newNode, referenceNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
@@ -12,6 +12,11 @@
 
     if (!MathQuill) {
       console.log("MathQuill.js not loaded");
+      return false;
+    }
+
+    if (!katex) {
+      console.log("katex.js not loaded");
       return false;
     }
 
@@ -99,7 +104,7 @@
     });
 
     //add handler to toolbar to fix functionality in safari
-    if (Boolean(window.safari)) {
+    if (window.safari) {
       var toolbar = this.getModule("toolbar");
       toolbar.addHandler("formula", function() {
         var inputBox = document.getElementsByClassName("ql-tooltip")[0];
@@ -110,4 +115,4 @@
     }
   };
 
-})(window.Quill, window.MathQuill);
+})(window.Quill, window.MathQuill, window.katex);

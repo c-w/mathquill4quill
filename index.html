@@ -33,6 +33,8 @@
     </label>
 
     <script>
+    (function($, Quill) {
+
       var quillOptions = {
         modules: {
           formula: true,
@@ -70,6 +72,8 @@
       });
 
       new Quill("#editor", quillOptions).enableMathQuillFormulaAuthoring(options);
+
+    })(window.jQuery, window.Quill);
     </script>
   </body>
 </html>
