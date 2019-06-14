@@ -4,8 +4,7 @@
 
 ## What's this?
 
-This module adds support for rich math authoring to the
-[Quill](http://quilljs.com/) editor.
+This module adds support for rich math authoring to the [Quill](http://quilljs.com/) editor.
 
 <img src="./demos/demo.gif" width="450" alt="Basic demo of mathquill4quill">
 
@@ -13,12 +12,7 @@ This module adds support for rich math authoring to the
 
 ## Usage example
 
-This module depends on
-[MathQuill](http://docs.mathquill.com/en/latest/Getting_Started/),
-[Quill](https://quilljs.com/docs/quickstart/) and
-[KaTeX](https://github.com/Khan/KaTeX#usage),
-so you'll need to add references to their JS and CSS files in addition to
-adding a reference to [mathquill4quill.js](https://github.com/c-w/mathquill4quill/blob/master/mathquill4quill.js).
+This module depends on [MathQuill](http://docs.mathquill.com/en/latest/Getting_Started/), [Quill](https://quilljs.com/docs/quickstart/) and [KaTeX](https://github.com/Khan/KaTeX#usage), so you'll need to add references to their JS and CSS files in addition to adding a reference to [mathquill4quill.js](https://github.com/c-w/mathquill4quill/blob/master/mathquill4quill.js).
 
 Next, initialize your Quill object and load the formula module:
 
