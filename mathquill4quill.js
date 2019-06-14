@@ -74,6 +74,10 @@
     return button;
   }
 
+  function isSafari() {
+    return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  }
+
   Quill.prototype.enableMathQuillFormulaAuthoring = function(options) {
     if (!areAllDependenciesMet(this)) {
       return;
@@ -108,7 +112,7 @@
     });
 
     //add handler to toolbar to fix functionality in safari
-    if (window.safari) {
+    if (isSafari()) {
       var toolbar = this.getModule("toolbar");
       toolbar.addHandler("formula", function() {
         var inputBox = document.getElementsByClassName("ql-tooltip")[0];
