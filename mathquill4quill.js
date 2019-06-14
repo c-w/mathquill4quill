@@ -41,6 +41,10 @@
     button.style.margin = "5px";
     button.style.width = "50px";
     button.style.height = "50px";
+    button.style.backgroundColor = "#ffffff";
+    button.style.borderColor = "#000000"
+    button.style.borderRadius = "7px";
+    button.style.borderWidth = "2px";
   }
 
   function getTooltipElement(quill) {
