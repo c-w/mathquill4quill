@@ -9,6 +9,9 @@ github:
     - mathquill4quill.min.js
   preRelease: true
 
+npm:
+  release: false
+
 hooks:
   before:init:
     - npm run lint
