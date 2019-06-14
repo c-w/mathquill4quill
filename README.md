@@ -56,12 +56,16 @@ The operators variable is an array of arrays. The outside array contains all of 
 
 <img src="./demos/demo-custom-operator-buttons.gif" width="450" alt="Demo of mathquill4quill with custom operator buttons">
 
-### Generating minified javascript files
+## Development setup
 
-Generation of minified javascript for this project uses uglifyjs. To generate minified javascript, first install all needed dependencies
+First, install the development dependencies:
 
-```
+```bash
 npm install
 ```
 
-When uglifyjs is installed, you can run `npm run build` which will generate a minified version of `mathquill4quill.js` called `mathquill4quill.min.js` that can be included in your webpage by substituting the minified file for the non-minified file directly.
+You can now start the development server using `npm start`.
+
+### Generating minified javascript files
+
+After installing the development dependencies, you can run `npm run build` which will generate a minified version of `mathquill4quill.js` called `mathquill4quill.min.js` that can be included in your webpage by substituting the minified file for the non-minified file directly.

@@ -1,8 +1,10 @@
 {
     "scripts": {
+        "start": "reload --browser --dir .",
         "build": "uglifyjs --compress --mangle -- mathquill4quill.js > mathquill4quill.min.js"
     },
     "devDependencies": {
+        "reload": "^3.0.1",
         "uglify-js": "^3.6.0"
     }
 }
