@@ -1,5 +1,7 @@
 {
+  "private": true,
   "scripts": {
+    "release": "release-it",
     "start": "reload --browser --dir .",
     "lint": "eslint '*.{js,html}'",
     "build": "uglifyjs --compress --mangle -- mathquill4quill.js > mathquill4quill.min.js"
@@ -7,6 +9,7 @@
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-plugin-html": "^5.0.5",
+    "release-it": "^12.3.0",
     "reload": "^3.0.1",
     "uglify-js": "^3.6.0"
   }
