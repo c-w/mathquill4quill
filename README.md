@@ -58,10 +58,10 @@ The operators variable is an array of arrays. The outside array contains all of 
 
 ### Generating minified javascript files
 
-Generation of minified javascript for this project uses uglifyjs. To generate minified javascript, first make sure that uglifyjs is installed globally(you may have to run this command as root):
+Generation of minified javascript for this project uses uglifyjs. To generate minified javascript, first install all needed dependencies
 
 ```
-npm install uglify-js -g
+npm install
 ```
 
 When uglifyjs is installed, you can run `npm run build` which will generate a minified version of `mathquill4quill.js` called `mathquill4quill.min.js` that can be included in your webpage by substituting the minified file for the non-minified file directly.
