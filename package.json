@@ -1,0 +1,8 @@
+{
+    "scripts": {
+        "build": "uglifyjs --compress --mangle -- mathquill4quill.js > mathquill4quill.min.js"
+    },
+    "devDependencies": {
+        "uglify-js": "^3.6.0"
+    }
+}

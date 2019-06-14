@@ -55,3 +55,13 @@ quill.enableMathQuillFormulaAuthoring({
 The operators variable is an array of arrays. The outside array contains all of the different arrays which describe the operator buttons. The arrays inside of the main array consist of two values. The first value is the latex that gets rendered as the value on the button, and the second value is the latex that gets inserted into the MathQuill editor.
 
 <img src="./demos/demo-custom-operator-buttons.gif" width="450" alt="Demo of mathquill4quill with custom operator buttons">
+
+### Generating minified javascript files
+
+Generation of minified javascript for this project uses uglifyjs. To generate minified javascript, first install all needed dependencies
+
+```
+npm install
+```
+
+When uglifyjs is installed, you can run `npm run build` which will generate a minified version of `mathquill4quill.js` called `mathquill4quill.min.js` that can be included in your webpage by substituting the minified file for the non-minified file directly.
