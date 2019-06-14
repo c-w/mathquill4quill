@@ -74,10 +74,6 @@
     return button;
   }
 
-  function isSafari() {
-    return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-  }
-
   Quill.prototype.enableMathQuillFormulaAuthoring = function(options) {
     if (!areAllDependenciesMet(this)) {
       return;
@@ -85,7 +81,7 @@
 
     // replace LaTeX formula input with MathQuill input
     var latexInput = getTooltipLatexFormulaInput(this);
-    latexInput.style.display = "none";
+    latexInput.setAttribute("style","visiblity:hidden;padding:0px;border:0px;width:0px;");
     var mqInput = document.createElement("span");
     applyInputStyles(mqInput);
     insertAfter(mqInput, latexInput);
@@ -110,17 +106,6 @@
     getTooltipSaveButton(this).addEventListener("click", function() {
       mqField.latex("");
     });
-
-    //add handler to toolbar to fix functionality in safari
-    if (isSafari()) {
-      var toolbar = this.getModule("toolbar");
-      toolbar.addHandler("formula", function() {
-        var inputBox = document.getElementsByClassName("ql-tooltip")[0];
-        inputBox.setAttribute("data-mode", "formula");
-        inputBox.className += " ql-editing ql-flip";
-        inputBox.classList.remove("ql-hidden");
-      });
-    }
   };
 
 })(window.Quill, window.MathQuill, window.katex);
