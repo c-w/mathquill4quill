@@ -1,6 +1,7 @@
 # MathQuill 4 Quill
 
 [![Build Status](https://clewolff.visualstudio.com/mathquill4quill/_apis/build/status/c-w.mathquill4quill?branchName=master)](https://clewolff.visualstudio.com/mathquill4quill/_build/latest?definitionId=5&branchName=master)
+[![Code Style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://github.com/c-w/mathquill4quill/blob/master/LICENSE.txt)
 
 ## What's this?

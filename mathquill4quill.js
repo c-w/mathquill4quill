@@ -1,5 +1,4 @@
 (function(Quill, MathQuill, katex) {
-
   function insertAfter(newNode, referenceNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
   }
@@ -65,7 +64,7 @@
     button.onclick = function() {
       mathquill.cmd(operator);
       mathquill.focus();
-    }
+    };
     applyButtonStyles(button);
     return button;
   }
@@ -94,7 +93,9 @@
     if (options && options.operators) {
       latexInput.parentNode.appendChild(document.createElement("br"));
       options.operators.forEach(function(element) {
-        latexInput.parentNode.appendChild(getOperatorButton(element[0], element[1], mqField));
+        latexInput.parentNode.appendChild(
+          getOperatorButton(element[0], element[1], mqField)
+        );
       });
     }
 
@@ -114,5 +115,4 @@
       });
     }
   };
-
 })(window.Quill, window.MathQuill, window.katex);

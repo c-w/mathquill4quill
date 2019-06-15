@@ -3,12 +3,16 @@
   "scripts": {
     "release": "release-it",
     "start": "reload --browser --dir .",
-    "lint": "eslint '*.{js,html}'",
+    "lint.eslint": "eslint '*.{js,html}'",
+    "lint.prettier": "prettier --check '*.js'",
+    "lint": "run-s lint.eslint lint.prettier",
     "build": "uglifyjs --compress --mangle -- mathquill4quill.js > mathquill4quill.min.js"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-plugin-html": "^5.0.5",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2",
     "release-it": "^12.3.0",
     "reload": "^3.0.1",
     "uglify-js": "^3.6.0"
