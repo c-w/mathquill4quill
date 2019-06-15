@@ -99,11 +99,14 @@
 
     if (options && options.operators) {
       latexInput.parentNode.appendChild(document.createElement("br"));
+      var container = document.createElement("div");
+      container.setAttribute("style","display:flex;align-items:center;");
       options.operators.forEach(function(element) {
-        latexInput.parentNode.appendChild(
+        container.appendChild(
           getOperatorButton(element[0], element[1], mqField)
         );
       });
+      latexInput.parentNode.appendChild(container);
     }
 
     // don't show the old math when the tooltip gets opened next time
