@@ -41,7 +41,7 @@
     button.style.width = "50px";
     button.style.height = "50px";
     button.style.backgroundColor = "#ffffff";
-    button.style.borderColor = "#000000"
+    button.style.borderColor = "#000000";
     button.style.borderRadius = "7px";
     button.style.borderWidth = "2px";
   }
@@ -83,7 +83,10 @@
     var mqInput = document.createElement("span");
     applyInputStyles(mqInput);
     insertAfter(mqInput, latexInput);
-    latexInput.setAttribute("style","visibility:hidden;padding:0px;border:0px;width:0px;");
+    latexInput.setAttribute(
+      "style",
+      "visibility:hidden;padding:0px;border:0px;width:0px;"
+    );
 
     // synchronize MathQuill input and LaTeX formula input
     var mqField = MathQuill.getInterface(2).MathField(mqInput, {
