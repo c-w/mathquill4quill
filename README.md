@@ -14,7 +14,7 @@ This module adds support for rich math authoring to the [Quill](http://quilljs.c
 
 ## Usage example
 
-This module depends on [MathQuill](http://docs.mathquill.com/en/latest/Getting_Started/), [Quill](https://quilljs.com/docs/quickstart/) and [KaTeX](https://github.com/Khan/KaTeX#usage), so you'll need to add references to their JS and CSS files in addition to adding a reference to [mathquill4quill.js](https://github.com/c-w/mathquill4quill/blob/master/mathquill4quill.js).
+This module depends on [MathQuill](http://docs.mathquill.com/en/latest/Getting_Started/), [Quill](https://quilljs.com/docs/quickstart/) and [KaTeX](https://github.com/Khan/KaTeX#usage), so you'll need to add references to their JS and CSS files in addition to adding a reference to `mathquill4quill.js`. Official builds as well as minified assets can be found on the [releases page](https://github.com/c-w/mathquill4quill/releases).
 
 Next, initialize your Quill object and load the formula module:
 
@@ -60,8 +60,4 @@ First, install the development dependencies:
 npm install
 ```
 
-You can now start the development server using `npm start`.
-
-### Generating minified javascript files
-
-After installing the development dependencies, you can run `npm run build` which will generate a minified version of `mathquill4quill.js` called `mathquill4quill.min.js` that can be included in your webpage by substituting the minified file for the non-minified file directly.
+You can now start the development server using `npm start` and verify code style compliance using `npm run lint`.
