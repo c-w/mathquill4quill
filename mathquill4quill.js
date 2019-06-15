@@ -40,6 +40,10 @@
     button.style.margin = "5px";
     button.style.width = "50px";
     button.style.height = "50px";
+    button.style.backgroundColor = "#ffffff";
+    button.style.borderColor = "#000000"
+    button.style.borderRadius = "7px";
+    button.style.borderWidth = "2px";
   }
 
   function getTooltipElement(quill) {
@@ -76,10 +80,10 @@
 
     // replace LaTeX formula input with MathQuill input
     var latexInput = getTooltipLatexFormulaInput(this);
-    latexInput.style.display = "none";
     var mqInput = document.createElement("span");
     applyInputStyles(mqInput);
     insertAfter(mqInput, latexInput);
+    latexInput.setAttribute("style","visibility:hidden;padding:0px;border:0px;width:0px;");
 
     // synchronize MathQuill input and LaTeX formula input
     var mqField = MathQuill.getInterface(2).MathField(mqInput, {
@@ -103,16 +107,5 @@
     getTooltipSaveButton(this).addEventListener("click", function() {
       mqField.latex("");
     });
-
-    //add handler to toolbar to fix functionality in safari
-    if (window.safari) {
-      var toolbar = this.getModule("toolbar");
-      toolbar.addHandler("formula", function() {
-        var inputBox = document.getElementsByClassName("ql-tooltip")[0];
-        inputBox.setAttribute("data-mode", "formula");
-        inputBox.className += " ql-editing ql-flip";
-        inputBox.classList.remove("ql-hidden");
-      });
-    }
   };
 })(window.Quill, window.MathQuill, window.katex);
