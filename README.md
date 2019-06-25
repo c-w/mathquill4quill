@@ -37,7 +37,8 @@ Last step: replace Quill's native formula authoring with MathQuill.
 ```javascript
 // enable mathquill formula editor
 
-quill.enableMathQuillFormulaAuthoring();
+var enableMathQuillFormulaAuthoring = mathquill4quill();
+enableMathQuillFormulaAuthoring(quill);
 ```
 
 ### React
@@ -79,7 +80,7 @@ class App extends React.Component {
 You can also add in operator buttons (buttons that allow users not familiar with latex to add in operators/functions like square roots) to the editor by passing an `operators` variable to the `enableMathQuillFormulaAuthoring()` function. Example:
 
 ```javascript
-quill.enableMathQuillFormulaAuthoring({
+enableMathQuillFormulaAuthoring(quill, {
   operators: [["\\sqrt[n]{x}", "\\nthroot"], ["\\frac{x}{y}","\\frac"]]
 });
 ```

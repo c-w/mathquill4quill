@@ -71,7 +71,9 @@
         });
       });
 
-      new Quill("#editor", quillOptions).enableMathQuillFormulaAuthoring(options);
+      var enableMathQuillFormulaAuthoring = window.mathquill4quill();
+      var quill = new Quill("#editor", quillOptions);
+      enableMathQuillFormulaAuthoring(quill, options);
 
     })(window.jQuery, window.Quill);
     </script>
