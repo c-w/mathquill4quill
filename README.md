@@ -14,6 +14,8 @@ This module adds support for rich math authoring to the [Quill](http://quilljs.c
 
 ## Usage example
 
+### Plain Javascript
+
 This module depends on [MathQuill](http://docs.mathquill.com/en/latest/Getting_Started/), [Quill](https://quilljs.com/docs/quickstart/) and [KaTeX](https://github.com/Khan/KaTeX#usage), so you'll need to add references to their JS and CSS files in addition to adding a reference to `mathquill4quill.js`. Official builds as well as minified assets can be found on the [releases page](https://github.com/c-w/mathquill4quill/releases).
 
 Next, initialize your Quill object and load the formula module:
@@ -35,15 +37,50 @@ Last step: replace Quill's native formula authoring with MathQuill.
 ```javascript
 // enable mathquill formula editor
 
-quill.enableMathQuillFormulaAuthoring();
+var enableMathQuillFormulaAuthoring = mathquill4quill();
+enableMathQuillFormulaAuthoring(quill);
 ```
+
+### React
+
+To integrate this module with [react-quill](https://github.com/zenoamaro/react-quill), add references to the JS and CSS files of MathQuill, KaTeX and mathquill4quill to your application. Next, you can enable the mathquill formula editor on your ReactQuill component:
+
+```javascript
+import React from 'react';
+import ReactQuill, { Quill } from 'react-quill';
+const { mathquill4quill } = window;
+
+class App extends React.Component {
+  reactQuill = React.createRef();
+
+  componentDidMount() {
+    const enableMathQuillFormulaAuthoring = mathquill4quill({ Quill });
+    enableMathQuillFormulaAuthoring(this.reactQuill.current.editor);
+  }
+
+  render() {
+    return (
+      <ReactQuill
+        ref={this.reactQuill}
+        modules={{
+          formula: true,
+          toolbar: [["formula", /* ... other toolbar items here ... */]]
+        }}
+        {/* ... other properties here ... */}
+      />
+    );
+  }
+}
+```
+
+## Optional features
 
 ### Custom operator buttons
 
 You can also add in operator buttons (buttons that allow users not familiar with latex to add in operators/functions like square roots) to the editor by passing an `operators` variable to the `enableMathQuillFormulaAuthoring()` function. Example:
 
 ```javascript
-quill.enableMathQuillFormulaAuthoring({
+enableMathQuillFormulaAuthoring(quill, {
   operators: [["\\sqrt[n]{x}", "\\nthroot"], ["\\frac{x}{y}","\\frac"]]
 });
 ```

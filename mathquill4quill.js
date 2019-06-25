@@ -1,4 +1,10 @@
-(function(Quill, MathQuill, katex) {
+window.mathquill4quill = function(dependencies) {
+  dependencies = dependencies || {};
+
+  var Quill = dependencies.Quill || window.Quill;
+  var MathQuill = dependencies.MathQuill || window.MathQuill;
+  var katex = dependencies.katex || window.katex;
+
   function insertAfter(newNode, referenceNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
   }
@@ -73,13 +79,13 @@
     return button;
   }
 
-  Quill.prototype.enableMathQuillFormulaAuthoring = function(options) {
-    if (!areAllDependenciesMet(this)) {
+  function enableMathQuillFormulaAuthoring(quill, options) {
+    if (!areAllDependenciesMet(quill)) {
       return;
     }
 
     // replace LaTeX formula input with MathQuill input
-    var latexInput = getTooltipLatexFormulaInput(this);
+    var latexInput = getTooltipLatexFormulaInput(quill);
     var mqInput = document.createElement("span");
     applyInputStyles(mqInput);
     insertAfter(mqInput, latexInput);
@@ -110,8 +116,17 @@
     }
 
     // don't show the old math when the tooltip gets opened next time
-    getTooltipSaveButton(this).addEventListener("click", function() {
+    getTooltipSaveButton(quill).addEventListener("click", function() {
       mqField.latex("");
     });
+  }
+
+  return enableMathQuillFormulaAuthoring;
+};
+
+// for backwards compatibility with prototype-based API
+if (window.Quill) {
+  window.Quill.prototype.enableMathQuillFormulaAuthoring = function(options) {
+    window.mathquill4quill()(this, options);
   };
-})(window.Quill, window.MathQuill, window.katex);
+}
