@@ -6,7 +6,10 @@ pool:
 
 steps:
 - script: npm install
-  displayName: 'Install dependencies'
+  displayName: 'Install npm dependencies'
+
+- script: apt-get install -y chrome
+  displayName: 'Install Chrome for testing'
 
 - script: npm run lint
   displayName: 'Run lint'
