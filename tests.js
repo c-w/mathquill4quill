@@ -21,7 +21,6 @@ module.exports = {
   "Can an equation be inserted": function(browser) {
     browser
       .useXpath()
-      .click('//div[@data-mode="formula"]/span')
       .keys(["x", "^", "2"])
       .click('//a[@class="ql-action"]')
       .waitForElementVisible('//span[@class="ql-formula"]')
