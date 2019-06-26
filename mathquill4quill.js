@@ -108,7 +108,7 @@ window.mathquill4quill = function(dependencies) {
     //set focus to formula editor when it is opened
     document.getElementsByClassName("ql-formula")[0].onclick = function() {
       window.setTimeout(function() {
-        mqField.focus()
+        mqField.focus();
       }, 1);
     };
 
