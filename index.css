@@ -1,0 +1,16 @@
+.github-ribbon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+main {
+  width: 400px;
+  height: 200px;
+  margin: 100px auto;
+}
+
+label {
+  padding-top: 0.5em;
+  display: block;
+}
