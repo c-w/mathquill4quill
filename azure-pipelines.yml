@@ -10,3 +10,6 @@ steps:
 
 - script: npm run lint
   displayName: 'Run lint'
+
+- script: npm run test
+  displayName: 'Run tests'
