@@ -97,4 +97,4 @@ First, install the development dependencies:
 npm install
 ```
 
-You can now start the development server using `npm start` and verify code style compliance using `npm run lint`.
+You can now start the development server using `npm start`, verify code style compliance with `npm run lint` and run the tests with `npm test`.
