@@ -8,11 +8,11 @@ steps:
 - script: npm install
   displayName: 'Install npm dependencies'
 
-- script: sudo apt-get update && sudo apt-get install -y chromium-browser
-  displayName: 'Install Chromium for testing'
-
 - script: npm run lint
   displayName: 'Run lint'
+
+- script: sudo apt-get update && sudo apt-get install -y chromium-browser
+  displayName: 'Install Chromium for testing'
 
 - script: npm run test
   displayName: 'Run tests'
