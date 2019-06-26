@@ -13,22 +13,22 @@ window.mathquill4quill = function(dependencies) {
 
   function areAllDependenciesMet(quill) {
     if (!Quill) {
-      console.log("Quill.js not loaded");
+      console.log("Quill.js not loaded"); // eslint-disable-line no-console
       return false;
     }
 
     if (!MathQuill) {
-      console.log("MathQuill.js not loaded");
+      console.log("MathQuill.js not loaded"); // eslint-disable-line no-console
       return false;
     }
 
     if (!katex) {
-      console.log("katex.js not loaded");
+      console.log("katex.js not loaded"); // eslint-disable-line no-console
       return false;
     }
 
     if (!quill.options.modules.formula) {
-      console.log("Formula module not enabled");
+      console.log("Formula module not enabled"); // eslint-disable-line no-console
       return false;
     }
 
