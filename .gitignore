@@ -1,3 +1,5 @@
 mathquill4quill.min.js
 /node_modules
 package-lock.json
+chromedriver.log
+/tests_output

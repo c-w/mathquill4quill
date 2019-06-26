@@ -1,0 +1,20 @@
+{
+    "src_folders" : ["tests"],
+  
+    "test_settings" : {
+      "chrome" : {
+        "webdriver" : {
+          "start_process": true,
+          "server_path": "node_modules/.bin/chromedriver",
+          "port": 9515
+        },
+        "desiredCapabilities": {
+          "browserName": "chrome",
+          "chromeOptions" : {
+            "args" : ["headless", "acceptInsecureCerts"]
+          }
+        }
+      }
+    }
+  }
+  
