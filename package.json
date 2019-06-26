@@ -2,12 +2,12 @@
   "private": true,
   "scripts": {
     "release": "release-it",
-    "start": "reload --browser --dir .",
+    "start": "reload --port 8080 --browser --dir .",
     "lint.eslint": "eslint \"**/*.{js,html}\"",
     "lint.prettier": "prettier --check \"**/*.js\"",
     "lint": "run-s lint.eslint lint.prettier",
     "build": "uglifyjs --compress --mangle -- mathquill4quill.js > mathquill4quill.min.js",
-    "test": "concurrently --kill-others --success first \"reload --dir .\" \"nightwatch -e chrome tests.js\""
+    "test": "concurrently --kill-others --success first \"serve -n -l 8000\" \"nightwatch -e chrome tests.js\""
   },
   "devDependencies": {
     "chromedriver": "^75.0.0",
@@ -19,6 +19,7 @@
     "prettier": "^1.18.2",
     "release-it": "^12.3.0",
     "reload": "^3.0.1",
+    "serve": "^11.0.2",
     "uglify-js": "^3.6.0"
   },
   "version": "0.1.0"
