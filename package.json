@@ -3,9 +3,10 @@
   "scripts": {
     "release": "release-it",
     "start": "reload --port 8080 --browser --dir .",
-    "lint.eslint": "eslint \"**/*.{js,html}\"",
+    "lint.html": "eslint --env browser --ext html .",
+    "lint.js": "eslint --ext js .",
     "lint.prettier": "prettier --check \"**/*.js\"",
-    "lint": "run-s lint.eslint lint.prettier",
+    "lint": "run-s lint.js lint.html lint.prettier",
     "build": "uglifyjs --compress --mangle -- mathquill4quill.js > mathquill4quill.min.js",
     "test": "concurrently --kill-others --success first \"serve -n -l 8000\" \"nightwatch -e chrome tests.js\""
   },

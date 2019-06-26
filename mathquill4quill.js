@@ -1,3 +1,5 @@
+/* eslint-env browser */
+
 window.mathquill4quill = function(dependencies) {
   dependencies = dependencies || {};
 
