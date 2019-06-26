@@ -3,8 +3,8 @@
   "scripts": {
     "release": "release-it",
     "start": "reload --browser --dir .",
-    "lint.eslint": "eslint '**/*.{js,html}'",
-    "lint.prettier": "prettier --check '**/*.js'",
+    "lint.eslint": "eslint \"**/*.{js,html}\"",
+    "lint.prettier": "prettier --check \"**/*.js\"",
     "lint": "run-s lint.eslint lint.prettier",
     "build": "uglifyjs --compress --mangle -- mathquill4quill.js > mathquill4quill.min.js",
     "test": "concurrently --kill-others --success first \"npm run start\" \"nightwatch -e chrome ./test/test.js\""
