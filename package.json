@@ -7,7 +7,7 @@
     "lint.prettier": "prettier --check '*.js'",
     "lint": "run-s lint.eslint lint.prettier",
     "build": "uglifyjs --compress --mangle -- mathquill4quill.js > mathquill4quill.min.js",
-    "test": "concurrently --kill-others \"npm run start\" \"nightwatch -e chrome ./test/test.js\""
+    "test": "concurrently --kill-others --success first \"npm run start\" \"nightwatch -e chrome ./test/test.js\""
   },
   "devDependencies": {
     "chromedriver": "^75.0.0",
