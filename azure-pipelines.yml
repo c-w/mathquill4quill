@@ -8,7 +8,7 @@ steps:
 - script: npm install
   displayName: 'Install npm dependencies'
 
-- script: apt-get install -y chrome
+- script: sudo apt-get install -y chrome
   displayName: 'Install Chrome for testing'
 
 - script: npm run lint
