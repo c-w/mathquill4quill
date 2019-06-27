@@ -105,6 +105,13 @@ window.mathquill4quill = function(dependencies) {
       }
     });
 
+    //set focus to formula editor when it is opened
+    document.getElementsByClassName("ql-formula")[0].onclick = function() {
+      window.setTimeout(function() {
+        mqField.focus();
+      }, 1);
+    };
+
     if (options && options.operators) {
       latexInput.parentNode.appendChild(document.createElement("br"));
       var container = document.createElement("div");
