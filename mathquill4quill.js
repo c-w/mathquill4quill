@@ -101,7 +101,6 @@ window.mathquill4quill = function(dependencies) {
 
     var tooltip = quill.container.getElementsByClassName("ql-tooltip")[0];
     var latexInput = tooltip.getElementsByTagName("input")[0];
-    var saveButton = tooltip.getElementsByClassName("ql-action")[0];
 
     // replace LaTeX formula input with MathQuill input
     var mqInput = document.createElement("span");
@@ -128,6 +127,11 @@ window.mathquill4quill = function(dependencies) {
 
       // hide operator buttons on non-formula tooltips
       operatorButtons.display(isFormula);
+
+      // hide math on non-formula tooltips
+      if (!isFormula) {
+        mqField.latex("");
+      }
     });
 
     observer.observe(tooltip, {
@@ -141,11 +145,6 @@ window.mathquill4quill = function(dependencies) {
         mqField.focus();
       }, 1);
     };
-
-    // don't show the old math when the tooltip gets opened next time
-    saveButton.addEventListener("click", function() {
-      mqField.latex("");
-    });
   }
 
   return enableMathQuillFormulaAuthoring;
