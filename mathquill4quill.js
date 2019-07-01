@@ -54,22 +54,37 @@ window.mathquill4quill = function(dependencies) {
     button.style.borderWidth = "2px";
   }
 
-  function applyOperatorContainerStyles(container) {
-    container.style.display = "flex";
-    container.style.alignItems = "center";
-  }
-
-  function createOperatorButton(displayOperator, operator, mathquill) {
+  function createOperatorButton(displayOperator, operator, mqField) {
     var button = document.createElement("button");
     katex.render(displayOperator, button, {
       throwOnError: false
     });
     button.onclick = function() {
-      mathquill.cmd(operator);
-      mathquill.focus();
+      mqField.cmd(operator);
+      mqField.focus();
     };
     applyOperatorButtonStyles(button);
     return button;
+  }
+
+  function createOperatorButtons(operators, tooltip, mqField) {
+    var operatorButtons = document.createElement("div");
+    operators.forEach(function(element) {
+      operatorButtons.appendChild(
+        createOperatorButton(element[0], element[1], mqField)
+      );
+    });
+    tooltip.appendChild(operatorButtons);
+
+    return {
+      show: function() {
+        operatorButtons.style.display = "flex";
+        operatorButtons.style.alignItems = "center";
+      },
+      hide: function() {
+        operatorButtons.style.display = "none";
+      },
+    }
   }
 
   function enableMathQuillFormulaAuthoring(quill, options) {
@@ -103,22 +118,15 @@ window.mathquill4quill = function(dependencies) {
     });
 
     if (options.operators.length > 0) {
-      // create operator buttons
-      var operatorButtons = document.createElement("div");
-      options.operators.forEach(function(element) {
-        operatorButtons.appendChild(
-          createOperatorButton(element[0], element[1], mqField)
-        );
-      });
-      tooltip.appendChild(operatorButtons);
+      var operatorButtons = createOperatorButtons(options.operators, tooltip, mqField);
 
       // hide operator buttons on non-formula tooltips
       var observer = new MutationObserver(function() {
         var mode = tooltip.attributes["data-mode"].value;
         if (mode === "formula") {
-          applyOperatorContainerStyles(operatorButtons);
+          operatorButtons.show();
         } else {
-          operatorButtons.style.display = "none";
+          operatorButtons.hide();
         }
       });
       observer.observe(tooltip, {
