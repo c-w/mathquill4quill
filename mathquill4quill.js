@@ -104,7 +104,6 @@ window.mathquill4quill = function(dependencies) {
 
     // create operator buttons
     var operatorButtons = document.createElement("div");
-    applyOperatorContainerStyles(operatorButtons, options);
     options.operators.forEach(function(element) {
       operatorButtons.appendChild(
         createOperatorButton(element[0], element[1], mqField)
@@ -112,16 +111,21 @@ window.mathquill4quill = function(dependencies) {
     });
     tooltip.appendChild(operatorButtons);
 
-    //set focus to formula editor when it is opened
     document.getElementsByClassName("ql-formula")[0].onclick = function() {
+      applyOperatorContainerStyles(operatorButtons, options);
+
+      // set focus to formula editor when it is opened
       window.setTimeout(function() {
         mqField.focus();
       }, 1);
     };
 
-    // don't show the old math when the tooltip gets opened next time
     saveButton.addEventListener("click", function() {
+      // don't show the old math when the tooltip gets opened next time
       mqField.latex("");
+
+      // hide operator buttons on other tooltips
+      operatorButtons.style.display = "none";
     });
   }
 
