@@ -35,13 +35,35 @@ window.mathquill4quill = function(dependencies) {
     return true;
   }
 
-  function applyInputStyles(mqInput) {
-    mqInput.style.border = "1px solid #ccc";
-    mqInput.style.fontSize = "13px";
-    mqInput.style.minHeight = "26px";
-    mqInput.style.margin = "0px";
-    mqInput.style.padding = "3px 5px";
-    mqInput.style.width = "170px";
+  function createMathquillInput(latexInput) {
+    function applyInputStyles(mqInput) {
+      mqInput.style.border = "1px solid #ccc";
+      mqInput.style.fontSize = "13px";
+      mqInput.style.minHeight = "26px";
+      mqInput.style.margin = "0px";
+      mqInput.style.padding = "3px 5px";
+      mqInput.style.width = "170px";
+    }
+
+    var mqInput = document.createElement("span");
+    applyInputStyles(mqInput);
+    insertAfter(mqInput, latexInput);
+    latexInput.setAttribute(
+      "style",
+      "visibility:hidden;padding:0px;border:0px;width:0px;"
+    );
+
+    var mqField = MathQuill.getInterface(2).MathField(mqInput, {
+      handlers: {
+        edit: function() {
+          latexInput.value = mqField.latex();
+        }
+      }
+    });
+
+    return {
+      field: mqField
+    };
   }
 
   function createOperatorButtons(operators, tooltip, mqField) {
@@ -105,27 +127,12 @@ window.mathquill4quill = function(dependencies) {
     var formulaButton = document.getElementsByClassName("ql-formula")[0];
 
     // replace LaTeX formula input with MathQuill input
-    var mqInput = document.createElement("span");
-    applyInputStyles(mqInput);
-    insertAfter(mqInput, latexInput);
-    latexInput.setAttribute(
-      "style",
-      "visibility:hidden;padding:0px;border:0px;width:0px;"
-    );
-
-    // synchronize MathQuill input and LaTeX formula input
-    var mqField = MathQuill.getInterface(2).MathField(mqInput, {
-      handlers: {
-        edit: function() {
-          latexInput.value = mqField.latex();
-        }
-      }
-    });
+    var mqInput = createMathquillInput(latexInput);
 
     var operatorButtons = createOperatorButtons(
       options.operators,
       tooltip,
-      mqField
+      mqInput.field
     );
 
     var observer = new MutationObserver(function() {
@@ -136,7 +143,7 @@ window.mathquill4quill = function(dependencies) {
 
       // hide math on non-formula tooltips
       if (!isFormula) {
-        mqField.latex("");
+        mqInput.field.latex("");
       }
     });
 
@@ -148,7 +155,7 @@ window.mathquill4quill = function(dependencies) {
     formulaButton.onclick = function() {
       // set focus to formula editor when it is opened
       window.setTimeout(function() {
-        mqField.focus();
+        mqInput.field.focus();
       }, 1);
     };
   }
