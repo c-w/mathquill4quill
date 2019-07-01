@@ -14,5 +14,4 @@ npm:
 
 hooks:
   before:init:
-    - npm run lint
     - npm run build
