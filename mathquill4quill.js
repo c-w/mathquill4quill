@@ -54,8 +54,8 @@ window.mathquill4quill = function(dependencies) {
     button.style.borderWidth = "2px";
   }
 
-  function applyOperatorContainerStyles(container, options) {
-    container.style.display = options.operators.length > 0 ? "flex" : "none";
+  function applyOperatorContainerStyles(container) {
+    container.style.display = "flex";
     container.style.alignItems = "center";
   }
 
@@ -102,28 +102,30 @@ window.mathquill4quill = function(dependencies) {
       }
     });
 
-    // create operator buttons
-    var operatorButtons = document.createElement("div");
-    options.operators.forEach(function(element) {
-      operatorButtons.appendChild(
-        createOperatorButton(element[0], element[1], mqField)
-      );
-    });
-    tooltip.appendChild(operatorButtons);
+    if (options.operators.length > 0) {
+      // create operator buttons
+      var operatorButtons = document.createElement("div");
+      options.operators.forEach(function(element) {
+        operatorButtons.appendChild(
+          createOperatorButton(element[0], element[1], mqField)
+        );
+      });
+      tooltip.appendChild(operatorButtons);
 
-    // hide operator buttons on non-formula tooltips
-    var observer = new MutationObserver(function() {
-      var mode = tooltip.attributes["data-mode"].value;
-      if (mode === "formula") {
-        applyOperatorContainerStyles(operatorButtons, options);
-      } else {
-        operatorButtons.style.display = "none";
-      }
-    });
-    observer.observe(tooltip, {
-      attributes: true,
-      attributeFilter: ["data-mode"],
-    });
+      // hide operator buttons on non-formula tooltips
+      var observer = new MutationObserver(function() {
+        var mode = tooltip.attributes["data-mode"].value;
+        if (mode === "formula") {
+          applyOperatorContainerStyles(operatorButtons);
+        } else {
+          operatorButtons.style.display = "none";
+        }
+      });
+      observer.observe(tooltip, {
+        attributes: true,
+        attributeFilter: ["data-mode"],
+      });
+    }
 
     document.getElementsByClassName("ql-formula")[0].onclick = function() {
       // set focus to formula editor when it is opened
