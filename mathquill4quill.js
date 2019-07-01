@@ -54,20 +54,6 @@ window.mathquill4quill = function(dependencies) {
     button.style.borderWidth = "2px";
   }
 
-  function getTooltipElement(quill) {
-    return quill.container.getElementsByClassName("ql-tooltip")[0];
-  }
-
-  function getTooltipLatexFormulaInput(quill) {
-    var tooltip = getTooltipElement(quill);
-    return tooltip.getElementsByTagName("input")[0];
-  }
-
-  function getTooltipSaveButton(quill) {
-    var tooltip = getTooltipElement(quill);
-    return tooltip.getElementsByClassName("ql-action")[0];
-  }
-
   function getOperatorButton(displayOperator, operator, mathquill) {
     var button = document.createElement("button");
     katex.render(displayOperator, button, {
@@ -86,8 +72,11 @@ window.mathquill4quill = function(dependencies) {
       return;
     }
 
+    var tooltip = quill.container.getElementsByClassName("ql-tooltip")[0];
+    var latexInput = tooltip.getElementsByTagName("input")[0];
+    var saveButton = tooltip.getElementsByClassName("ql-action")[0];
+
     // replace LaTeX formula input with MathQuill input
-    var latexInput = getTooltipLatexFormulaInput(quill);
     var mqInput = document.createElement("span");
     applyInputStyles(mqInput);
     insertAfter(mqInput, latexInput);
@@ -113,7 +102,7 @@ window.mathquill4quill = function(dependencies) {
     };
 
     if (options && options.operators) {
-      latexInput.parentNode.appendChild(document.createElement("br"));
+      tooltip.appendChild(document.createElement("br"));
       var container = document.createElement("div");
       container.setAttribute("style", "display:flex;align-items:center;");
       options.operators.forEach(function(element) {
@@ -121,11 +110,11 @@ window.mathquill4quill = function(dependencies) {
           getOperatorButton(element[0], element[1], mqField)
         );
       });
-      latexInput.parentNode.appendChild(container);
+      tooltip.appendChild(container);
     }
 
     // don't show the old math when the tooltip gets opened next time
-    getTooltipSaveButton(quill).addEventListener("click", function() {
+    saveButton.addEventListener("click", function() {
       mqField.latex("");
     });
   }
