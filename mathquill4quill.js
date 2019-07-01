@@ -68,21 +68,21 @@ window.mathquill4quill = function(dependencies) {
   }
 
   function createOperatorButtons(operators, tooltip, mqField) {
-    var operatorButtons = document.createElement("div");
+    var container = document.createElement("div");
     operators.forEach(function(element) {
-      operatorButtons.appendChild(
+      container.appendChild(
         createOperatorButton(element[0], element[1], mqField)
       );
     });
-    tooltip.appendChild(operatorButtons);
+    tooltip.appendChild(container);
 
     return {
       show: function() {
-        operatorButtons.style.display = "flex";
-        operatorButtons.style.alignItems = "center";
+        container.style.display = "flex";
+        container.style.alignItems = "center";
       },
       hide: function() {
-        operatorButtons.style.display = "none";
+        container.style.display = "none";
       },
     }
   }
