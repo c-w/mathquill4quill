@@ -106,7 +106,6 @@ window.mathquill4quill = function(dependencies) {
 
     if (options.operators.length > 0) {
       var container = document.createElement("div");
-      container.appendChild(document.createElement("br"));
       container.setAttribute("style", "display:flex;align-items:center;");
       options.operators.forEach(function(element) {
         container.appendChild(
