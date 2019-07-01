@@ -111,21 +111,30 @@ window.mathquill4quill = function(dependencies) {
     });
     tooltip.appendChild(operatorButtons);
 
-    document.getElementsByClassName("ql-formula")[0].onclick = function() {
-      applyOperatorContainerStyles(operatorButtons, options);
+    // hide operator buttons on non-formula tooltips
+    var observer = new MutationObserver(function() {
+      var mode = tooltip.attributes["data-mode"].value;
+      if (mode === "formula") {
+        applyOperatorContainerStyles(operatorButtons, options);
+      } else {
+        operatorButtons.style.display = "none";
+      }
+    });
+    observer.observe(tooltip, {
+      attributes: true,
+      attributeFilter: ["data-mode"],
+    });
 
+    document.getElementsByClassName("ql-formula")[0].onclick = function() {
       // set focus to formula editor when it is opened
       window.setTimeout(function() {
         mqField.focus();
       }, 1);
     };
 
+    // don't show the old math when the tooltip gets opened next time
     saveButton.addEventListener("click", function() {
-      // don't show the old math when the tooltip gets opened next time
       mqField.latex("");
-
-      // hide operator buttons on other tooltips
-      operatorButtons.style.display = "none";
     });
   }
 
