@@ -54,8 +54,8 @@ window.mathquill4quill = function(dependencies) {
     button.style.borderWidth = "2px";
   }
 
-  function applyOperatorContainerStyles(container) {
-    container.style.display = "flex";
+  function applyOperatorContainerStyles(container, options) {
+    container.style.display = options.operators.length > 0 ? "flex" : "none";
     container.style.alignItems = "center";
   }
 
@@ -102,23 +102,22 @@ window.mathquill4quill = function(dependencies) {
       }
     });
 
+    // create operator buttons
+    var operatorButtons = document.createElement("div");
+    applyOperatorContainerStyles(operatorButtons, options);
+    options.operators.forEach(function(element) {
+      operatorButtons.appendChild(
+        createOperatorButton(element[0], element[1], mqField)
+      );
+    });
+    tooltip.appendChild(operatorButtons);
+
     //set focus to formula editor when it is opened
     document.getElementsByClassName("ql-formula")[0].onclick = function() {
       window.setTimeout(function() {
         mqField.focus();
       }, 1);
     };
-
-    if (options.operators.length > 0) {
-      var container = document.createElement("div");
-      applyOperatorContainerStyles(container);
-      options.operators.forEach(function(element) {
-        container.appendChild(
-          createOperatorButton(element[0], element[1], mqField)
-        );
-      });
-      tooltip.appendChild(container);
-    }
 
     // don't show the old math when the tooltip gets opened next time
     saveButton.addEventListener("click", function() {
