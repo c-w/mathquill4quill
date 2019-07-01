@@ -5,9 +5,9 @@
 }
 
 main {
-  width: 400px;
+  max-width: 400px;
   height: 200px;
-  margin: 100px auto;
+  margin: 50px auto;
 }
 
 label {
