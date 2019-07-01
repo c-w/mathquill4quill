@@ -101,6 +101,7 @@ window.mathquill4quill = function(dependencies) {
 
     var tooltip = quill.container.getElementsByClassName("ql-tooltip")[0];
     var latexInput = tooltip.getElementsByTagName("input")[0];
+    var formulaButton = document.getElementsByClassName("ql-formula")[0];
 
     // replace LaTeX formula input with MathQuill input
     var mqInput = document.createElement("span");
@@ -143,7 +144,7 @@ window.mathquill4quill = function(dependencies) {
       attributeFilter: ["data-mode"]
     });
 
-    document.getElementsByClassName("ql-formula")[0].onclick = function() {
+    formulaButton.onclick = function() {
       // set focus to formula editor when it is opened
       window.setTimeout(function() {
         mqField.focus();
