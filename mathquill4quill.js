@@ -44,7 +44,7 @@ window.mathquill4quill = function(dependencies) {
     mqInput.style.width = "170px";
   }
 
-  function applyButtonStyles(button) {
+  function applyOperatorButtonStyles(button) {
     button.style.margin = "5px";
     button.style.width = "50px";
     button.style.height = "50px";
@@ -54,7 +54,7 @@ window.mathquill4quill = function(dependencies) {
     button.style.borderWidth = "2px";
   }
 
-  function getOperatorButton(displayOperator, operator, mathquill) {
+  function createOperatorButton(displayOperator, operator, mathquill) {
     var button = document.createElement("button");
     katex.render(displayOperator, button, {
       throwOnError: false
@@ -63,7 +63,7 @@ window.mathquill4quill = function(dependencies) {
       mathquill.cmd(operator);
       mathquill.focus();
     };
-    applyButtonStyles(button);
+    applyOperatorButtonStyles(button);
     return button;
   }
 
@@ -110,7 +110,7 @@ window.mathquill4quill = function(dependencies) {
       container.setAttribute("style", "display:flex;align-items:center;");
       options.operators.forEach(function(element) {
         container.appendChild(
-          getOperatorButton(element[0], element[1], mqField)
+          createOperatorButton(element[0], element[1], mqField)
         );
       });
       tooltip.appendChild(container);
