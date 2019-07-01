@@ -77,7 +77,7 @@ class App extends React.Component {
 
 ### Custom operator buttons
 
-You can also add in operator buttons (buttons that allow users not familiar with latex to add in operators/functions like square roots) to the editor by passing an `operators` variable to the `enableMathQuillFormulaAuthoring()` function. Example:
+You can also add in operator buttons (buttons that allow users not familiar with latex to add in operators/functions like square roots) to the editor by passing the `operators` option to the `enableMathQuillFormulaAuthoring()` function. Example:
 
 ```javascript
 enableMathQuillFormulaAuthoring(quill, {
@@ -88,6 +88,16 @@ enableMathQuillFormulaAuthoring(quill, {
 The operators variable is an array of arrays. The outside array contains all of the different arrays which describe the operator buttons. The arrays inside of the main array consist of two values. The first value is the latex that gets rendered as the value on the button, and the second value is the latex that gets inserted into the MathQuill editor.
 
 <img src="./demos/demo-custom-operator-buttons.gif" width="450" alt="Demo of mathquill4quill with custom operator buttons">
+
+### Autofocus
+
+For user convenience, mathquill4quill defaults to focusing the math input field when the formula button is pressed. You can disable this behavior via the `autofocus` option in the `enableMathQuillFormulaAuthoring()` function. Example:
+
+```javascript
+enableMathQuillFormulaAuthoring(quill, {
+  autofocus: false
+});
+```
 
 ## Development setup
 
