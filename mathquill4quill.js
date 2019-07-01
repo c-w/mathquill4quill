@@ -44,35 +44,36 @@ window.mathquill4quill = function(dependencies) {
     mqInput.style.width = "170px";
   }
 
-  function applyOperatorButtonStyles(button) {
-    button.style.margin = "5px";
-    button.style.width = "50px";
-    button.style.height = "50px";
-    button.style.backgroundColor = "#ffffff";
-    button.style.borderColor = "#000000";
-    button.style.borderRadius = "7px";
-    button.style.borderWidth = "2px";
-  }
-
-  function createOperatorButton(displayOperator, operator, mqField) {
-    var button = document.createElement("button");
-    katex.render(displayOperator, button, {
-      throwOnError: false
-    });
-    button.onclick = function() {
-      mqField.cmd(operator);
-      mqField.focus();
-    };
-    applyOperatorButtonStyles(button);
-    return button;
-  }
-
   function createOperatorButtons(operators, tooltip, mqField) {
+    function applyOperatorButtonStyles(button) {
+      button.style.margin = "5px";
+      button.style.width = "50px";
+      button.style.height = "50px";
+      button.style.backgroundColor = "#ffffff";
+      button.style.borderColor = "#000000";
+      button.style.borderRadius = "7px";
+      button.style.borderWidth = "2px";
+    }
+
+    function createOperatorButton(element) {
+      var displayOperator = element[0];
+      var operator = element[1];
+
+      var button = document.createElement("button");
+      katex.render(displayOperator, button, {
+        throwOnError: false
+      });
+      button.onclick = function() {
+        mqField.cmd(operator);
+        mqField.focus();
+      };
+      applyOperatorButtonStyles(button);
+      return button;
+    }
+
     var container = document.createElement("div");
     operators.forEach(function(element) {
-      container.appendChild(
-        createOperatorButton(element[0], element[1], mqField)
-      );
+      container.appendChild(createOperatorButton(element));
     });
 
     if (operators.length > 0) {
