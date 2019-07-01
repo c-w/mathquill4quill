@@ -87,8 +87,8 @@ window.mathquill4quill = function(dependencies) {
         } else {
           container.style.display = "none";
         }
-      },
-    }
+      }
+    };
   }
 
   function enableMathQuillFormulaAuthoring(quill, options) {
@@ -120,7 +120,11 @@ window.mathquill4quill = function(dependencies) {
       }
     });
 
-    var operatorButtons = createOperatorButtons(options.operators, tooltip, mqField);
+    var operatorButtons = createOperatorButtons(
+      options.operators,
+      tooltip,
+      mqField
+    );
 
     var observer = new MutationObserver(function() {
       var isFormula = tooltip.attributes["data-mode"].value === "formula";
@@ -136,7 +140,7 @@ window.mathquill4quill = function(dependencies) {
 
     observer.observe(tooltip, {
       attributes: true,
-      attributeFilter: ["data-mode"],
+      attributeFilter: ["data-mode"]
     });
 
     document.getElementsByClassName("ql-formula")[0].onclick = function() {
