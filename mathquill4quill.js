@@ -54,6 +54,11 @@ window.mathquill4quill = function(dependencies) {
     button.style.borderWidth = "2px";
   }
 
+  function applyOperatorContainerStyles(container) {
+    container.style.display = "flex";
+    container.style.alignItems = "center";
+  }
+
   function createOperatorButton(displayOperator, operator, mathquill) {
     var button = document.createElement("button");
     katex.render(displayOperator, button, {
@@ -106,7 +111,7 @@ window.mathquill4quill = function(dependencies) {
 
     if (options.operators.length > 0) {
       var container = document.createElement("div");
-      container.setAttribute("style", "display:flex;align-items:center;");
+      applyOperatorContainerStyles(container);
       options.operators.forEach(function(element) {
         container.appendChild(
           createOperatorButton(element[0], element[1], mqField)
