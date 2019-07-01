@@ -74,15 +74,19 @@ window.mathquill4quill = function(dependencies) {
         createOperatorButton(element[0], element[1], mqField)
       );
     });
-    tooltip.appendChild(container);
+
+    if (operators.length > 0) {
+      tooltip.appendChild(container);
+    }
 
     return {
-      show: function() {
-        container.style.display = "flex";
-        container.style.alignItems = "center";
-      },
-      hide: function() {
-        container.style.display = "none";
+      display: function(show) {
+        if (show) {
+          container.style.display = "flex";
+          container.style.alignItems = "center";
+        } else {
+          container.style.display = "none";
+        }
       },
     }
   }
@@ -117,23 +121,19 @@ window.mathquill4quill = function(dependencies) {
       }
     });
 
-    if (options.operators.length > 0) {
-      var operatorButtons = createOperatorButtons(options.operators, tooltip, mqField);
+    var operatorButtons = createOperatorButtons(options.operators, tooltip, mqField);
+
+    var observer = new MutationObserver(function() {
+      var isFormula = tooltip.attributes["data-mode"].value === "formula";
 
       // hide operator buttons on non-formula tooltips
-      var observer = new MutationObserver(function() {
-        var mode = tooltip.attributes["data-mode"].value;
-        if (mode === "formula") {
-          operatorButtons.show();
-        } else {
-          operatorButtons.hide();
-        }
-      });
-      observer.observe(tooltip, {
-        attributes: true,
-        attributeFilter: ["data-mode"],
-      });
-    }
+      operatorButtons.display(isFormula);
+    });
+
+    observer.observe(tooltip, {
+      attributes: true,
+      attributeFilter: ["data-mode"],
+    });
 
     document.getElementsByClassName("ql-formula")[0].onclick = function() {
       // set focus to formula editor when it is opened
