@@ -5,7 +5,7 @@
     var quillOptions = {
       modules: {
         formula: true,
-        toolbar: [["bold", "italic", "underline", "formula"]]
+        toolbar: [["video", "bold", "italic", "underline", "formula"]]
       },
       placeholder:
         "Type text here, or click on the formula button to enter math.",
