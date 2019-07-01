@@ -72,6 +72,9 @@ window.mathquill4quill = function(dependencies) {
       return;
     }
 
+    options = options || {};
+    options.operators = options.operators || [];
+
     var tooltip = quill.container.getElementsByClassName("ql-tooltip")[0];
     var latexInput = tooltip.getElementsByTagName("input")[0];
     var saveButton = tooltip.getElementsByClassName("ql-action")[0];
@@ -101,7 +104,7 @@ window.mathquill4quill = function(dependencies) {
       }, 1);
     };
 
-    if (options && options.operators) {
+    if (options.operators.length > 0) {
       tooltip.appendChild(document.createElement("br"));
       var container = document.createElement("div");
       container.setAttribute("style", "display:flex;align-items:center;");
