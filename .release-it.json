@@ -1,7 +1,7 @@
 {
   "git": {
     "tagName": "v${version}",
-    "commitMessage": "Release version ${version"
+    "commitMessage": "Release version ${version}"
   },
   "github": {
     "release": true,
