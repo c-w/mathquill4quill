@@ -8,7 +8,7 @@
 
 This module adds support for rich math authoring to the [Quill](http://quilljs.com/) editor.
 
-<img src="./demos/demo.gif" width="450" alt="Basic demo of mathquill4quill">
+<img src="https://user-images.githubusercontent.com/1086421/60978795-afb8e100-a2ff-11e9-8a4a-6f77e24001c9.gif" width="450" alt="Basic demo of mathquill4quill">
 
 [Live demo](https://c-w.github.io/mathquill4quill/)
 
@@ -87,7 +87,7 @@ enableMathQuillFormulaAuthoring(quill, {
 
 The operators variable is an array of arrays. The outside array contains all of the different arrays which describe the operator buttons. The arrays inside of the main array consist of two values. The first value is the latex that gets rendered as the value on the button, and the second value is the latex that gets inserted into the MathQuill editor.
 
-<img src="./demos/demo-custom-operator-buttons.gif" width="450" alt="Demo of mathquill4quill with custom operator buttons">
+<img src="https://user-images.githubusercontent.com/1086421/60978823-b8a9b280-a2ff-11e9-990a-ffba2b4ff394.gif" width="450" alt="Demo of mathquill4quill with custom operator buttons">
 
 ### Autofocus
 
