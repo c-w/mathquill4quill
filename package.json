@@ -1,6 +1,5 @@
 {
   "name": "mathquill4quill",
-  "private": true,
   "scripts": {
     "release": "release-it",
     "start": "reload --port 8080 --browser --dir .",
@@ -22,7 +21,7 @@
     "serve": "^11.0.2",
     "uglify-js": "^3.6.0"
   },
-  "version": "0.1.5",
+  "version": "0.1.3",
   "publishConfig": {
     "access": "public"
   }
