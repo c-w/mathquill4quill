@@ -1,5 +1,6 @@
 {
   "name": "mathquill4quill",
+  "license": "Apache-2.0",
   "scripts": {
     "release": "release-it",
     "start": "reload --port 8080 --browser --dir .",
@@ -20,6 +21,10 @@
     "reload": "^3.0.1",
     "serve": "^11.0.2",
     "uglify-js": "^3.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/c-w/mathquill4quill"
   },
   "version": "0.1.3",
   "publishConfig": {
