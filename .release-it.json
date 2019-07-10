@@ -1,0 +1,22 @@
+{
+  "git": {
+    "tagName": "v${version}",
+    "commitMessage": "Release version ${version"
+  },
+  "github": {
+    "release": true,
+    "assets": [
+      "mathquill4quill.js",
+      "mathquill4quill.min.js"
+    ],
+    "preRelease": true
+  },
+  "npm": {
+    "release": true
+  },
+  "hooks": {
+    "before:init": [
+      "npm run build"
+    ]
+  }
+}

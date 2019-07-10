@@ -1,4 +1,5 @@
 {
+  "name": "mathquill4quill",
   "private": true,
   "scripts": {
     "release": "release-it",
