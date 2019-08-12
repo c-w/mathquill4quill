@@ -155,6 +155,7 @@ window.mathquill4quill = function(dependencies) {
         var operator = element[1];
 
         var button = document.createElement("button");
+        button.setAttribute("type", "button");
 
         katex.render(displayOperator, button, {
           throwOnError: false
