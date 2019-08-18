@@ -3,9 +3,9 @@
 window.mathquill4quill = function(dependencies) {
   dependencies = dependencies || {};
 
-  var Quill = dependencies.Quill || window.Quill;
-  var MathQuill = dependencies.MathQuill || window.MathQuill;
-  var katex = dependencies.katex || window.katex;
+  const Quill = dependencies.Quill || window.Quill;
+  const MathQuill = dependencies.MathQuill || window.MathQuill;
+  const katex = dependencies.katex || window.katex;
 
   function insertAfter(newNode, referenceNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
@@ -48,15 +48,15 @@ window.mathquill4quill = function(dependencies) {
     }
 
     function getLatexInput() {
-      var tooltip = getTooltip();
+      const tooltip = getTooltip();
       return tooltip.getElementsByTagName("input")[0];
     }
 
     function newMathquillInput() {
-      var autofocus = options.autofocus || true;
-      var mqInput = null;
-      var mqField = null;
-      var latexInputStyle = null;
+      const autofocus = options.autofocus || true;
+      let mqInput = null;
+      let mqField = null;
+      let latexInputStyle = null;
 
       function applyMathquillInputStyles(mqInput) {
         mqInput.style.border = "1px solid #ccc";
@@ -75,9 +75,9 @@ window.mathquill4quill = function(dependencies) {
       }
 
       function syncMathquillToQuill(latexInput) {
-        var mqField = MathQuill.getInterface(2).MathField(mqInput, {
+        const mqField = MathQuill.getInterface(2).MathField(mqInput, {
           handlers: {
-            edit: function() {
+            edit() {
               latexInput.value = mqField.latex();
             }
           }
@@ -91,18 +91,16 @@ window.mathquill4quill = function(dependencies) {
           return;
         }
 
-        window.setTimeout(function() {
-          mqField.focus();
-        }, 1);
+        window.setTimeout(() => mqField.focus(), 1);
       }
 
       return {
-        render: function() {
+        render() {
           if (mqInput != null) {
             return;
           }
 
-          var latexInput = getLatexInput();
+          const latexInput = getLatexInput();
 
           mqInput = document.createElement("span");
           applyMathquillInputStyles(mqInput);
@@ -116,12 +114,12 @@ window.mathquill4quill = function(dependencies) {
           insertAfter(mqInput, latexInput);
           return mqField;
         },
-        destroy: function() {
+        destroy() {
           if (mqInput == null) {
             return;
           }
 
-          var latexInput = getLatexInput();
+          const latexInput = getLatexInput();
 
           latexInput.setAttribute("style", latexInputStyle);
 
@@ -132,8 +130,8 @@ window.mathquill4quill = function(dependencies) {
     }
 
     function newOperatorButtons() {
-      var operators = options.operators || [];
-      var container = null;
+      const operators = options.operators || [];
+      let container = null;
 
       function applyOperatorButtonStyles(button) {
         button.style.margin = "5px";
@@ -151,16 +149,16 @@ window.mathquill4quill = function(dependencies) {
       }
 
       function createOperatorButton(element, mqField) {
-        var displayOperator = element[0];
-        var operator = element[1];
+        const displayOperator = element[0];
+        const operator = element[1];
 
-        var button = document.createElement("button");
+        const button = document.createElement("button");
         button.setAttribute("type", "button");
 
         katex.render(displayOperator, button, {
           throwOnError: false
         });
-        button.onclick = function() {
+        button.onclick = () => {
           mqField.cmd(operator);
           mqField.focus();
         };
@@ -169,25 +167,25 @@ window.mathquill4quill = function(dependencies) {
       }
 
       return {
-        render: function(mqField) {
+        render(mqField) {
           if (container != null || operators.length === 0) {
             return;
           }
 
-          var tooltip = getTooltip();
+          const tooltip = getTooltip();
 
           container = document.createElement("div");
           applyOperatorContainerStyles(container);
 
-          operators.forEach(function(element) {
-            var button = createOperatorButton(element, mqField);
+          operators.forEach(element => {
+            const button = createOperatorButton(element, mqField);
             applyOperatorButtonStyles(button);
             container.appendChild(button);
           });
 
           tooltip.appendChild(container);
         },
-        destroy: function() {
+        destroy() {
           if (container == null) {
             return;
           }
@@ -202,19 +200,19 @@ window.mathquill4quill = function(dependencies) {
       return;
     }
 
-    var tooltip = getTooltip();
+    const tooltip = getTooltip();
 
-    var mqInput = newMathquillInput();
-    var operatorButtons = newOperatorButtons();
+    const mqInput = newMathquillInput();
+    const operatorButtons = newOperatorButtons();
 
-    var observer = new MutationObserver(function() {
-      var isFormulaTooltipActive =
+    const observer = new MutationObserver(() => {
+      const isFormulaTooltipActive =
         !tooltip.classList.contains("ql-hidden") &&
         tooltip.attributes["data-mode"] &&
         tooltip.attributes["data-mode"].value === "formula";
 
       if (isFormulaTooltipActive) {
-        var mqField = mqInput.render();
+        const mqField = mqInput.render();
         operatorButtons.render(mqField);
       } else {
         mqInput.destroy();

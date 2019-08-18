@@ -1,4 +1,4 @@
-*.min.js
+/build
 /node_modules
 package-lock.json
 chromedriver.log

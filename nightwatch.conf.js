@@ -1,6 +1,6 @@
 /* eslint-env node */
 
-var chromedriver = require("chromedriver");
+const chromedriver = require("chromedriver");
 
 module.exports = {
   test_settings: {
