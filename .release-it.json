@@ -6,8 +6,8 @@
   "github": {
     "release": true,
     "assets": [
-      "mathquill4quill.js",
-      "mathquill4quill.min.js"
+      "build/mathquill4quill.js",
+      "build/mathquill4quill.min.js"
     ],
     "preRelease": true
   },
