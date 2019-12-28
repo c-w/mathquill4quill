@@ -17,7 +17,7 @@
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
-    "chromedriver": "^75.0.0",
+    "chromedriver": "^78.0.0",
     "concurrently": "^4.1.1",
     "eslint": "^5.16.0",
     "mkdirp": "^0.5.1",
