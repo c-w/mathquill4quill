@@ -2,7 +2,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'ubuntu-18.04'
 
 steps:
 - script: npm install
@@ -10,9 +10,6 @@ steps:
 
 - script: npm run lint
   displayName: 'Run lint'
-
-- script: sudo apt-get update && sudo apt-get install -y chromium-browser
-  displayName: 'Install Chromium for testing'
 
 - script: npm run test
   displayName: 'Run tests'
