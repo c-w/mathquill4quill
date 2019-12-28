@@ -34,6 +34,10 @@
     "url": "https://github.com/c-w/mathquill4quill"
   },
   "version": "1.0.0",
+  "files": [
+    "build/mathquill4quill.min.js",
+    "mathquill4quill.js"
+  ],
   "publishConfig": {
     "access": "public"
   }
