@@ -13,3 +13,11 @@ steps:
 
 - script: npm run test
   displayName: 'Run tests'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '*.xml'
+    searchFolder: '$(Build.Repository.LocalPath)/tests_output'
+    mergeTestResults: true
+  condition: always()
