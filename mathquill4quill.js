@@ -47,6 +47,11 @@ window.mathquill4quill = function(dependencies) {
       return quill.container.getElementsByClassName("ql-tooltip")[0];
     }
 
+    function getSaveButton() {
+      const tooltip = getTooltip();
+      return tooltip.getElementsByClassName("ql-action")[0];
+    }
+
     function getLatexInput() {
       const tooltip = getTooltip();
       return tooltip.getElementsByTagName("input")[0];
@@ -74,11 +79,14 @@ window.mathquill4quill = function(dependencies) {
         );
       }
 
-      function syncMathquillToQuill(latexInput) {
+      function syncMathquillToQuill(latexInput, saveButton) {
         const mqField = MathQuill.getInterface(2).MathField(mqInput, {
           handlers: {
             edit() {
               latexInput.value = mqField.latex();
+            },
+            enter() {
+              saveButton.click();
             }
           }
         });
@@ -101,6 +109,7 @@ window.mathquill4quill = function(dependencies) {
           }
 
           const latexInput = getLatexInput();
+          const saveButton = getSaveButton();
 
           mqInput = document.createElement("span");
           applyMathquillInputStyles(mqInput);
@@ -108,7 +117,7 @@ window.mathquill4quill = function(dependencies) {
           latexInputStyle = latexInput.style.all;
           applyLatexInputStyles(latexInput);
 
-          mqField = syncMathquillToQuill(latexInput);
+          mqField = syncMathquillToQuill(latexInput, saveButton);
           autofocusFormulaField(mqField);
 
           insertAfter(mqInput, latexInput);
