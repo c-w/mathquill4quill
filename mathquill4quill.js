@@ -53,7 +53,7 @@ window.mathquill4quill = function(dependencies) {
     }
 
     function newMathquillInput() {
-      const autofocus = options.autofocus || true;
+      const autofocus = options.autofocus == null ? true : options.autofocus;
       let mqInput = null;
       let mqField = null;
       let latexInputStyle = null;
