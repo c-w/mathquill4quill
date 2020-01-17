@@ -11,7 +11,7 @@
     "build.babel": "babel mathquill4quill.js > build/mathquill4quill.js",
     "build.uglify": "uglifyjs --compress --mangle -- build/mathquill4quill.js > build/mathquill4quill.min.js",
     "build": "run-s build.babel build.uglify",
-    "test": "concurrently --kill-others --success first \"serve -n -l 8000\" \"nightwatch -e chrome tests.js\""
+    "test": "concurrently --kill-others --success first \"serve -n -l 8000\" \"nightwatch -e chrome tests\""
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",

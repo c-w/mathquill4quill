@@ -9,15 +9,6 @@ module.exports = {
       .click('//button[@class="ql-formula"]')
       .waitForElementVisible('//div[@data-mode="formula"]');
   },
-  "Is the formula editor using mathquill": function(browser) {
-    browser
-      .useXpath()
-      .assert.attributeContains(
-        '//div[@data-mode="formula"]/span',
-        "class",
-        "mq-editable-field mq-math-mode"
-      );
-  },
   "Can an equation be inserted": function(browser) {
     browser
       .useXpath()
