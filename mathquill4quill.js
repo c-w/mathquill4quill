@@ -6,6 +6,31 @@ window.mathquill4quill = function(dependencies) {
   const Quill = dependencies.Quill || window.Quill;
   const MathQuill = dependencies.MathQuill || window.MathQuill;
   const katex = dependencies.katex || window.katex;
+  const localStorage = dependencies.localStorage || window.localStorage;
+
+  function setCacheItem(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch (e) {
+      // eslint-disable-line no-empty
+    }
+  }
+
+  function getCacheItem(key) {
+    try {
+      return localStorage.getItem(key);
+    } catch (e) {
+      return "";
+    }
+  }
+
+  function removeCacheItem(key) {
+    try {
+      localStorage.removeItem(key);
+    } catch (e) {
+      // eslint-disable-line no-empty
+    }
+  }
 
   function insertAfter(newNode, referenceNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
@@ -59,6 +84,7 @@ window.mathquill4quill = function(dependencies) {
 
     function newMathquillInput() {
       const autofocus = options.autofocus == null ? true : options.autofocus;
+      const cacheKey = options.cacheKey || "__mathquill4quill_cache__";
       let mqInput = null;
       let mqField = null;
       let latexInputStyle = null;
@@ -83,13 +109,22 @@ window.mathquill4quill = function(dependencies) {
         const mqField = MathQuill.getInterface(2).MathField(mqInput, {
           handlers: {
             edit() {
-              latexInput.value = mqField.latex();
+              const latex = mqField.latex();
+              latexInput.value = latex;
+              setCacheItem(cacheKey, latex);
             },
             enter() {
               saveButton.click();
             }
           }
         });
+
+        const cachedLatex = getCacheItem(cacheKey);
+        if (cachedLatex) {
+          mqField.latex(cachedLatex);
+        }
+
+        saveButton.addEventListener("click", () => removeCacheItem(cacheKey));
 
         return mqField;
       }
