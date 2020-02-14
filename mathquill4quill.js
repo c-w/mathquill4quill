@@ -8,6 +8,33 @@ window.mathquill4quill = function(dependencies) {
   const katex = dependencies.katex || window.katex;
   const localStorage = dependencies.localStorage || window.localStorage;
 
+  const defaultStyles = {
+    mathquillInput:
+      "border: 1px solid #ccc; " +
+      "font-size: 13px; " +
+      "min-height: 26px; " +
+      "margin: 0px; " +
+      "padding: 3px 5px; " +
+      "width: 170px;",
+
+    operatorButton:
+      "margin: 5px; " +
+      "width: 50px; " +
+      "height: 50px; " +
+      "background-color: #ffffff; " +
+      "border-color: #000000; " +
+      "border-radius: 7px; " +
+      "border-width: 2px;",
+
+    operatorContainer: "display: flex; align-items: center;",
+
+    latexInput:
+      "visibility: hidden; " +
+      "padding: 0px; " +
+      "border: 0px; " +
+      "width: 0px;"
+  };
+
   function setCacheItem(key, value) {
     try {
       localStorage.setItem(key, value);
@@ -85,24 +112,18 @@ window.mathquill4quill = function(dependencies) {
     function newMathquillInput() {
       const autofocus = options.autofocus == null ? true : options.autofocus;
       const cacheKey = options.cacheKey || "__mathquill4quill_cache__";
+      const styles = options.styles || defaultStyles;
+
       let mqInput = null;
       let mqField = null;
       let latexInputStyle = null;
 
       function applyMathquillInputStyles(mqInput) {
-        mqInput.style.border = "1px solid #ccc";
-        mqInput.style.fontSize = "13px";
-        mqInput.style.minHeight = "26px";
-        mqInput.style.margin = "0px";
-        mqInput.style.padding = "3px 5px";
-        mqInput.style.width = "170px";
+        mqInput.style.cssText = styles.mathquillInput;
       }
 
       function applyLatexInputStyles(latexInput) {
-        latexInput.setAttribute(
-          "style",
-          "visibility:hidden;padding:0px;border:0px;width:0px;"
-        );
+        latexInput.setAttribute("style", styles.latexInput);
       }
 
       function syncMathquillToQuill(latexInput, saveButton) {
@@ -175,21 +196,15 @@ window.mathquill4quill = function(dependencies) {
 
     function newOperatorButtons() {
       const operators = options.operators || [];
+      const styles = options.styles || defaultStyles;
       let container = null;
 
       function applyOperatorButtonStyles(button) {
-        button.style.margin = "5px";
-        button.style.width = "50px";
-        button.style.height = "50px";
-        button.style.backgroundColor = "#ffffff";
-        button.style.borderColor = "#000000";
-        button.style.borderRadius = "7px";
-        button.style.borderWidth = "2px";
+        button.style.cssText = styles.operatorButton;
       }
 
       function applyOperatorContainerStyles(container) {
-        container.style.display = "flex";
-        container.style.alignItems = "center";
+        container.style.cssText = styles.operatorContainer;
       }
 
       function createOperatorButton(element, mqField) {
