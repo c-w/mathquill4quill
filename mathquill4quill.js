@@ -107,7 +107,8 @@ window.mathquill4quill = function(dependencies) {
       }
 
       function syncMathquillToQuill(latexInput, saveButton) {
-        mathQuillConfig.handlers = {
+        const handlers = mathQuillConfig.handlers == null ? {} : mathQuillConfig.handlers;
+        mathQuillConfig.handlers = {...handlers,
           edit() {
               const latex = mqField.latex();
               latexInput.value = latex;
