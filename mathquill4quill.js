@@ -84,7 +84,8 @@ window.mathquill4quill = function(dependencies) {
 
     function newMathquillInput() {
       const autofocus = options.autofocus == null ? true : options.autofocus;
-      const mathQuillConfig = options.mathQuillConfig != null ? options.mathQuillConfig : {};
+      const mathQuillConfig =
+        options.mathQuillConfig != null ? options.mathQuillConfig : {};
       const cacheKey = options.cacheKey || "__mathquill4quill_cache__";
       let mqInput = null;
       let mqField = null;
@@ -107,18 +108,23 @@ window.mathquill4quill = function(dependencies) {
       }
 
       function syncMathquillToQuill(latexInput, saveButton) {
-        const handlers = mathQuillConfig.handlers == null ? {} : mathQuillConfig.handlers;
-        mathQuillConfig.handlers = {...handlers,
+        const handlers =
+          mathQuillConfig.handlers == null ? {} : mathQuillConfig.handlers;
+        mathQuillConfig.handlers = {
+          ...handlers,
           edit() {
-              const latex = mqField.latex();
-              latexInput.value = latex;
-              setCacheItem(cacheKey, latex);
+            const latex = mqField.latex();
+            latexInput.value = latex;
+            setCacheItem(cacheKey, latex);
           },
           enter() {
-              saveButton.click();
+            saveButton.click();
           }
         };
-        const mqField = MathQuill.getInterface(2).MathField(mqInput, mathQuillConfig);
+        const mqField = MathQuill.getInterface(2).MathField(
+          mqInput,
+          mathQuillConfig
+        );
 
         const cachedLatex = getCacheItem(cacheKey);
         if (cachedLatex) {

@@ -2,7 +2,7 @@
 
 module.exports = {
   parserOptions: {
-    ecmaVersion: 6
+    ecmaVersion: 2018
   },
   rules: {
     "no-var": "error"
