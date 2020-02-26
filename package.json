@@ -5,8 +5,9 @@
     "release": "release-it",
     "start": "reload --port 8080 --browser --dir .",
     "lint.js": "eslint --ext js .",
+    "lint.css": "stylelint \"*.css\"",
     "lint.prettier": "prettier --check \"**/*.js\"",
-    "lint": "run-s lint.js lint.prettier",
+    "lint": "run-s lint.js lint.css lint.prettier",
     "prebuild": "mkdirp build",
     "build.babel": "babel mathquill4quill.js > build/mathquill4quill.js",
     "build.uglify": "uglifyjs --compress --mangle -- build/mathquill4quill.js > build/mathquill4quill.min.js",
@@ -29,6 +30,8 @@
     "release-it": "^12.4.3",
     "reload": "^3.0.1",
     "serve": "^11.0.2",
+    "stylelint": "^13.2.0",
+    "stylelint-config-standard": "^20.0.0",
     "uglify-js": "^3.6.0"
   },
   "repository": {
