@@ -68,6 +68,31 @@ window.mathquill4quill = function(dependencies) {
       return true;
     }
 
+    function fetchHistoryList(key) {
+      try {
+        return JSON.parse(localStorage.getItem(key)) || [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function addItemToHistoryList(key) {
+      item = getCacheItem(key);
+      if (item && item.length > 0) {
+        index = historyList.indexOf(item);
+        if (index != -1) {
+          historyList.splice(index, 1)
+        }
+        historyList.unshift(item);
+        if (historyList.length > historySize) historyList.pop();
+        try {
+          localStorage.setItem(historyCacheKey, JSON.stringify(historyList));
+        } catch (e) {
+          // eslint-disable-line no-empty
+        }
+      }
+    }
+
     function getTooltip() {
       return quill.container.getElementsByClassName("ql-tooltip")[0];
     }
@@ -123,7 +148,10 @@ window.mathquill4quill = function(dependencies) {
           mqField.latex(cachedLatex);
         }
 
-        saveButton.addEventListener("click", () => removeCacheItem(cacheKey));
+        saveButton.addEventListener("click", () => {
+          addItemToHistoryList(cacheKey);
+          removeCacheItem(cacheKey);
+        });
 
         return mqField;
       }
@@ -232,14 +260,120 @@ window.mathquill4quill = function(dependencies) {
       };
     }
 
+    function newHistoryList() {
+      const history = historyList || [];
+      let historyDiv = null;
+
+      function applyHistoryButtonStyles(button) {
+        button.style.overflow = "hidden";
+        button.style.margin = "5px";
+        button.style.width = "270px";
+        button.style.height = "65px";
+        button.style.minHeight = "60px";
+        button.style.backgroundColor = "#ffffff";
+        button.style.borderColor = "#000000";
+        button.style.borderRadius = "7px";
+        button.style.borderWidth = "2px";
+        button.style.cursor = "pointer";
+        button.style.transition =  "background-color 0.3s linear";
+        button.onmouseenter = function() 
+        {
+            this.style.backgroundColor = "rgb(239, 240, 241)";
+            this.style.opacity = "0.7";
+        }
+        button.onmouseleave = function() 
+        {
+            this.style.backgroundColor = "#ffffff";
+            this.style.opacity = "1";
+        }
+      }
+
+      function applyHistoryContainerStyles(container) {
+        container.style.display = "flex";
+        container.style.flexDirection = "column";
+        container.style.alignItems = "center";
+        container.style.width = "300px";
+        container.style.height = "150px";
+        container.style.overflow = "auto";
+      }
+
+      function createHistoryButton(latex, mqField) {
+        const button = document.createElement("button");
+        button.setAttribute("type", "button");
+
+        katex.render(latex, button, {
+          throwOnError: false
+        });
+        button.onclick = () => {
+          mqField.write(latex);
+          mqField.focus();
+        };
+
+        return button;
+      }
+
+      return {
+        render(mqField) {
+
+          fixToolTipHeight()
+
+          if (historyDiv != null || !displayHistory || history.length === 0) {
+            return;
+          }
+
+          const tooltip = getTooltip();
+
+          historyDiv = document.createElement("div");
+          container = document.createElement("div");
+          applyHistoryContainerStyles(container);
+          header = document.createElement("p");
+          header.innerHTML = "Past formulas (max " + historySize + ")"
+          historyDiv.appendChild(header)
+
+          history.forEach(element => {
+            const button = createHistoryButton(element, mqField);
+            applyHistoryButtonStyles(button);
+            container.appendChild(button);
+          });
+          historyDiv.appendChild(container)
+          tooltip.appendChild(historyDiv);
+        },
+        destroy() {
+          if (historyDiv == null) {
+            return;
+          }
+
+          historyDiv.remove();
+          historyDiv = null;
+        }
+      };
+    }
+
+    // If tooltip hangs below Quill div, Quill will position tooltip in bad place if function is clicked twice
+    // This addresses the position issue
+    function fixToolTipHeight() {
+
+      const tooltip = getTooltip();
+
+      if (tooltip.getBoundingClientRect().top - quill.container.getBoundingClientRect().top < 0) {
+        tooltip.style.top = "38px";
+      }
+    }
+
     if (!areAllDependenciesMet()) {
       return;
     }
 
     const tooltip = getTooltip();
 
+    const historyCacheKey = options.historyCacheKey || "__mathquill4quill_historylist_cache__";
+    var historyList = fetchHistoryList(historyCacheKey);
+    const historySize = options.historySize || 10;
+    const displayHistory = options.displayHistory || false;
+
     const mqInput = newMathquillInput();
     const operatorButtons = newOperatorButtons();
+    const historyListButtons = newHistoryList();
 
     const observer = new MutationObserver(() => {
       const isFormulaTooltipActive =
@@ -250,9 +384,11 @@ window.mathquill4quill = function(dependencies) {
       if (isFormulaTooltipActive) {
         const mqField = mqInput.render();
         operatorButtons.render(mqField);
+        historyListButtons.render(mqField);
       } else {
         mqInput.destroy();
         operatorButtons.destroy();
+        historyListButtons.destroy();
       }
     });
 
