@@ -81,7 +81,7 @@ window.mathquill4quill = function(dependencies) {
       if (item && item.length > 0) {
         const index = historyList.indexOf(item);
         if (index != -1) {
-          historyList.splice(index, 1)
+          historyList.splice(index, 1);
         }
         historyList.unshift(item);
         if (historyList.length > historySize) historyList.pop();
@@ -275,17 +275,15 @@ window.mathquill4quill = function(dependencies) {
         button.style.borderRadius = "7px";
         button.style.borderWidth = "2px";
         button.style.cursor = "pointer";
-        button.style.transition =  "background-color 0.3s linear";
-        button.onmouseenter = function() 
-        {
-            this.style.backgroundColor = "rgb(239, 240, 241)";
-            this.style.opacity = "0.7";
-        }
-        button.onmouseleave = function() 
-        {
-            this.style.backgroundColor = "#ffffff";
-            this.style.opacity = "1";
-        }
+        button.style.transition = "background-color 0.3s linear";
+        button.onmouseenter = function() {
+          this.style.backgroundColor = "rgb(239, 240, 241)";
+          this.style.opacity = "0.7";
+        };
+        button.onmouseleave = function() {
+          this.style.backgroundColor = "#ffffff";
+          this.style.opacity = "1";
+        };
       }
 
       function applyHistoryContainerStyles(container) {
@@ -314,8 +312,7 @@ window.mathquill4quill = function(dependencies) {
 
       return {
         render(mqField) {
-
-          fixToolTipHeight()
+          fixToolTipHeight();
 
           if (historyDiv != null || !displayHistory || history.length === 0) {
             return;
@@ -327,15 +324,15 @@ window.mathquill4quill = function(dependencies) {
           let container = document.createElement("div");
           applyHistoryContainerStyles(container);
           let header = document.createElement("p");
-          header.innerHTML = "Past formulas (max " + historySize + ")"
-          historyDiv.appendChild(header)
+          header.innerHTML = "Past formulas (max " + historySize + ")";
+          historyDiv.appendChild(header);
 
           history.forEach(element => {
             const button = createHistoryButton(element, mqField);
             applyHistoryButtonStyles(button);
             container.appendChild(button);
           });
-          historyDiv.appendChild(container)
+          historyDiv.appendChild(container);
           tooltip.appendChild(historyDiv);
         },
         destroy() {
@@ -352,10 +349,13 @@ window.mathquill4quill = function(dependencies) {
     // If tooltip hangs below Quill div, Quill will position tooltip in bad place if function is clicked twice
     // This addresses the position issue
     function fixToolTipHeight() {
-
       const tooltip = getTooltip();
 
-      if (tooltip.getBoundingClientRect().top - quill.container.getBoundingClientRect().top < 0) {
+      if (
+        tooltip.getBoundingClientRect().top -
+          quill.container.getBoundingClientRect().top <
+        0
+      ) {
         tooltip.style.top = "38px";
       }
     }
@@ -366,7 +366,8 @@ window.mathquill4quill = function(dependencies) {
 
     const tooltip = getTooltip();
 
-    const historyCacheKey = options.historyCacheKey || "__mathquill4quill_historylist_cache__";
+    const historyCacheKey =
+      options.historyCacheKey || "__mathquill4quill_historylist_cache__";
     let historyList = fetchHistoryList(historyCacheKey);
     const historySize = options.historySize || 10;
     const displayHistory = options.displayHistory || false;
