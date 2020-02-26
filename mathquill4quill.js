@@ -77,9 +77,9 @@ window.mathquill4quill = function(dependencies) {
     }
 
     function addItemToHistoryList(key) {
-      item = getCacheItem(key);
+      const item = getCacheItem(key);
       if (item && item.length > 0) {
-        index = historyList.indexOf(item);
+        const index = historyList.indexOf(item);
         if (index != -1) {
           historyList.splice(index, 1)
         }
@@ -332,9 +332,9 @@ window.mathquill4quill = function(dependencies) {
           const tooltip = getTooltip();
 
           historyDiv = document.createElement("div");
-          container = document.createElement("div");
+          let container = document.createElement("div");
           applyHistoryContainerStyles(container);
-          header = document.createElement("p");
+          let header = document.createElement("p");
           header.innerHTML = "Past formulas (max " + historySize + ")"
           historyDiv.appendChild(header)
 
@@ -375,7 +375,7 @@ window.mathquill4quill = function(dependencies) {
     const tooltip = getTooltip();
 
     const historyCacheKey = options.historyCacheKey || "__mathquill4quill_historylist_cache__";
-    var historyList = fetchHistoryList(historyCacheKey);
+    let historyList = fetchHistoryList(historyCacheKey);
     const historySize = options.historySize || 10;
     const displayHistory = options.displayHistory || false;
 
