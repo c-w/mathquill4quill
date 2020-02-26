@@ -265,34 +265,11 @@ window.mathquill4quill = function(dependencies) {
       let historyDiv = null;
 
       function applyHistoryButtonStyles(button) {
-        button.style.overflow = "hidden";
-        button.style.margin = "5px";
-        button.style.width = "270px";
-        button.style.height = "65px";
-        button.style.minHeight = "60px";
-        button.style.backgroundColor = "#ffffff";
-        button.style.borderColor = "#000000";
-        button.style.borderRadius = "7px";
-        button.style.borderWidth = "2px";
-        button.style.cursor = "pointer";
-        button.style.transition = "background-color 0.3s linear";
-        button.onmouseenter = function() {
-          this.style.backgroundColor = "rgb(239, 240, 241)";
-          this.style.opacity = "0.7";
-        };
-        button.onmouseleave = function() {
-          this.style.backgroundColor = "#ffffff";
-          this.style.opacity = "1";
-        };
+        button.setAttribute("class", "mathquill4quill-history-button");
       }
 
       function applyHistoryContainerStyles(container) {
-        container.style.display = "flex";
-        container.style.flexDirection = "column";
-        container.style.alignItems = "center";
-        container.style.width = "300px";
-        container.style.height = "150px";
-        container.style.overflow = "auto";
+        container.setAttribute("class", "mathquill4quill-history-container");
       }
 
       function createHistoryButton(latex, mqField) {
@@ -356,7 +333,7 @@ window.mathquill4quill = function(dependencies) {
           quill.container.getBoundingClientRect().top <
         0
       ) {
-        tooltip.style.top = "38px";
+        tooltip.style.top = "0px";
       }
     }
 
