@@ -13,6 +13,7 @@
     "build.uglify": "uglifyjs --compress --mangle -- build/mathquill4quill.js > build/mathquill4quill.min.js",
     "build.csso": "csso --input mathquill4quill.css --output build/mathquill4quill.min.css",
     "build": "run-s build.babel build.uglify build.csso",
+    "postbuild": "rimraf build/mathquill4quill.js",
     "test": "concurrently --kill-others --success first \"serve -n -l 8000\" \"nightwatch -e chrome tests\""
   },
   "devDependencies": {
@@ -29,6 +30,7 @@
     "prettier": "^1.18.2",
     "release-it": "^12.4.3",
     "reload": "^3.0.1",
+    "rimraf": "^3.0.2",
     "serve": "^11.0.2",
     "stylelint": "^13.2.0",
     "stylelint-config-standard": "^20.0.0",
