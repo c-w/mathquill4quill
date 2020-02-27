@@ -90,19 +90,11 @@ window.mathquill4quill = function(dependencies) {
       let latexInputStyle = null;
 
       function applyMathquillInputStyles(mqInput) {
-        mqInput.style.border = "1px solid #ccc";
-        mqInput.style.fontSize = "13px";
-        mqInput.style.minHeight = "26px";
-        mqInput.style.margin = "0px";
-        mqInput.style.padding = "3px 5px";
-        mqInput.style.width = "170px";
+        mqInput.setAttribute("class", "mathquill4quill-mathquill-input");
       }
 
       function applyLatexInputStyles(latexInput) {
-        latexInput.setAttribute(
-          "style",
-          "visibility:hidden;padding:0px;border:0px;width:0px;"
-        );
+        latexInput.setAttribute("class", "mathquill4quill-latex-input");
       }
 
       function syncMathquillToQuill(latexInput, saveButton) {
@@ -178,18 +170,11 @@ window.mathquill4quill = function(dependencies) {
       let container = null;
 
       function applyOperatorButtonStyles(button) {
-        button.style.margin = "5px";
-        button.style.width = "50px";
-        button.style.height = "50px";
-        button.style.backgroundColor = "#ffffff";
-        button.style.borderColor = "#000000";
-        button.style.borderRadius = "7px";
-        button.style.borderWidth = "2px";
+        button.setAttribute("class", "mathquill4quill-operator-button");
       }
 
       function applyOperatorContainerStyles(container) {
-        container.style.display = "flex";
-        container.style.alignItems = "center";
+        container.setAttribute("class", "mathquill4quill-operator-container");
       }
 
       function createOperatorButton(element, mqField) {
