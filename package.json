@@ -5,20 +5,24 @@
     "release": "release-it",
     "start": "reload --port 8080 --browser --dir .",
     "lint.js": "eslint --ext js .",
+    "lint.css": "stylelint \"*.css\"",
     "lint.prettier": "prettier --check \"**/*.js\"",
-    "lint": "run-s lint.js lint.prettier",
+    "lint": "run-s lint.js lint.css lint.prettier",
     "prebuild": "mkdirp build",
     "build.babel": "babel mathquill4quill.js > build/mathquill4quill.js",
     "build.uglify": "uglifyjs --compress --mangle -- build/mathquill4quill.js > build/mathquill4quill.min.js",
-    "build": "run-s build.babel build.uglify",
+    "build.csso": "csso --input mathquill4quill.css --output build/mathquill4quill.min.css",
+    "build": "run-s build.babel build.uglify build.csso",
+    "postbuild": "rimraf build/mathquill4quill.js",
     "test": "concurrently --kill-others --success first \"serve -n -l 8000\" \"nightwatch -e chrome tests\""
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
-    "chromedriver": "^79.0.0",
+    "chromedriver": "^80.0.0",
     "concurrently": "^4.1.1",
+    "csso-cli": "^3.0.0",
     "eslint": "^5.16.0",
     "mkdirp": "^0.5.1",
     "nightwatch": "^1.1.12",
@@ -26,16 +30,21 @@
     "prettier": "^1.18.2",
     "release-it": "^12.4.3",
     "reload": "^3.0.1",
+    "rimraf": "^3.0.2",
     "serve": "^11.0.2",
+    "stylelint": "^13.2.0",
+    "stylelint-config-standard": "^20.0.0",
     "uglify-js": "^3.6.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/c-w/mathquill4quill"
   },
-  "version": "1.0.2",
+  "version": "2.0.0",
   "files": [
+    "build/mathquill4quill.min.css",
     "build/mathquill4quill.min.js",
+    "mathquill4quill.css",
     "mathquill4quill.js"
   ],
   "publishConfig": {

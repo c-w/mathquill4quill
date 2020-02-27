@@ -17,7 +17,7 @@ This module adds support for rich math authoring to the [Quill](http://quilljs.c
 
 ### Plain Javascript
 
-This module depends on [MathQuill](http://docs.mathquill.com/en/latest/Getting_Started/), [Quill](https://quilljs.com/docs/quickstart/) and [KaTeX](https://github.com/Khan/KaTeX#usage), so you'll need to add references to their JS and CSS files in addition to adding a reference to `mathquill4quill.js`. Official builds as well as minified assets can be found on the [releases page](https://github.com/c-w/mathquill4quill/releases).
+This module depends on [MathQuill](http://docs.mathquill.com/en/latest/Getting_Started/), [Quill](https://quilljs.com/docs/quickstart/) and [KaTeX](https://github.com/Khan/KaTeX#usage), so you'll need to add references to their JS and CSS files in addition to adding a reference to `mathquill4quill.js` and `mathquill4quill.css`. Official builds as well as minified assets can be found on the [releases page](https://github.com/c-w/mathquill4quill/releases).
 
 Next, initialize your Quill object and load the formula module:
 
