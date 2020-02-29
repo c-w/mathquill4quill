@@ -90,6 +90,22 @@ The operators variable is an array of arrays. The outside array contains all of 
 
 <img src="https://user-images.githubusercontent.com/1086421/60978823-b8a9b280-a2ff-11e9-990a-ffba2b4ff394.gif" width="450" alt="Demo of mathquill4quill with custom operator buttons">
 
+### List of previous formulas
+
+Previous formulas can be saved and re-used. The available related configurations are:
+
+```javascript
+enableMathQuillFormulaAuthoring(quill, {
+  displayHistory: true, // defaults to false
+  historyCacheKey: '__my_app_math_history_cachekey_', // optional 
+  historySize: 20 // optional (defaults to 10)
+});
+```
+
+This works by saving formula to a list (and local storage by default) everytime a new formula is used. Then displaying this list when a user opens the formula tooltip.
+
+![ezgif com-video-to-gif](https://user-images.githubusercontent.com/31671215/75315157-c96b5200-5816-11ea-99c2-f5414ee8e241.gif)
+
 ### Autofocus
 
 For user convenience, mathquill4quill defaults to focusing the math input field when the formula button is pressed. You can disable this behavior via the `autofocus` option in the `enableMathQuillFormulaAuthoring()` function. Example:
