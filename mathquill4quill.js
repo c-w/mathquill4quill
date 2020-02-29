@@ -68,6 +68,31 @@ window.mathquill4quill = function(dependencies) {
       return true;
     }
 
+    function fetchHistoryList(key) {
+      try {
+        return JSON.parse(localStorage.getItem(key)) || [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function addItemToHistoryList(key) {
+      const item = getCacheItem(key);
+      if (item && item.length > 0) {
+        const index = historyList.indexOf(item);
+        if (index != -1) {
+          historyList.splice(index, 1);
+        }
+        historyList.unshift(item);
+        if (historyList.length > historySize) historyList.pop();
+        try {
+          localStorage.setItem(historyCacheKey, JSON.stringify(historyList));
+        } catch (e) {
+          // eslint-disable-line no-empty
+        }
+      }
+    }
+
     function getTooltip() {
       return quill.container.getElementsByClassName("ql-tooltip")[0];
     }
@@ -123,7 +148,10 @@ window.mathquill4quill = function(dependencies) {
           mqField.latex(cachedLatex);
         }
 
-        saveButton.addEventListener("click", () => removeCacheItem(cacheKey));
+        saveButton.addEventListener("click", () => {
+          addItemToHistoryList(cacheKey);
+          removeCacheItem(cacheKey);
+        });
 
         return mqField;
       }
@@ -232,14 +260,98 @@ window.mathquill4quill = function(dependencies) {
       };
     }
 
+    function newHistoryList() {
+      const history = historyList || [];
+      let historyDiv = null;
+
+      function applyHistoryButtonStyles(button) {
+        button.setAttribute("class", "mathquill4quill-history-button");
+      }
+
+      function applyHistoryContainerStyles(container) {
+        container.setAttribute("class", "mathquill4quill-history-container");
+      }
+
+      function createHistoryButton(latex, mqField) {
+        const button = document.createElement("button");
+        button.setAttribute("type", "button");
+
+        katex.render(latex, button, {
+          throwOnError: false
+        });
+        button.onclick = () => {
+          mqField.write(latex);
+          mqField.focus();
+        };
+
+        return button;
+      }
+
+      return {
+        render(mqField) {
+          fixToolTipHeight();
+
+          if (historyDiv != null || !displayHistory || history.length === 0) {
+            return;
+          }
+
+          const tooltip = getTooltip();
+
+          historyDiv = document.createElement("div");
+          let container = document.createElement("div");
+          applyHistoryContainerStyles(container);
+          let header = document.createElement("p");
+          header.innerHTML = "Past formulas (max " + historySize + ")";
+          historyDiv.appendChild(header);
+
+          history.forEach(element => {
+            const button = createHistoryButton(element, mqField);
+            applyHistoryButtonStyles(button);
+            container.appendChild(button);
+          });
+          historyDiv.appendChild(container);
+          tooltip.appendChild(historyDiv);
+        },
+        destroy() {
+          if (historyDiv == null) {
+            return;
+          }
+
+          historyDiv.remove();
+          historyDiv = null;
+        }
+      };
+    }
+
+    // If tooltip hangs below Quill div, Quill will position tooltip in bad place if function is clicked twice
+    // This addresses the position issue
+    function fixToolTipHeight() {
+      const tooltip = getTooltip();
+
+      if (
+        tooltip.getBoundingClientRect().top -
+          quill.container.getBoundingClientRect().top <
+        0
+      ) {
+        tooltip.style.top = "0px";
+      }
+    }
+
     if (!areAllDependenciesMet()) {
       return;
     }
 
     const tooltip = getTooltip();
 
+    const historyCacheKey =
+      options.historyCacheKey || "__mathquill4quill_historylist_cache__";
+    let historyList = fetchHistoryList(historyCacheKey);
+    const historySize = options.historySize || 10;
+    const displayHistory = options.displayHistory || false;
+
     const mqInput = newMathquillInput();
     const operatorButtons = newOperatorButtons();
+    const historyListButtons = newHistoryList();
 
     const observer = new MutationObserver(() => {
       const isFormulaTooltipActive =
@@ -250,9 +362,11 @@ window.mathquill4quill = function(dependencies) {
       if (isFormulaTooltipActive) {
         const mqField = mqInput.render();
         operatorButtons.render(mqField);
+        historyListButtons.render(mqField);
       } else {
         mqInput.destroy();
         operatorButtons.destroy();
+        historyListButtons.destroy();
       }
     });
 
