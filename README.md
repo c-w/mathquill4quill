@@ -97,14 +97,14 @@ Previous formulas can be saved and re-used. The available related configurations
 ```javascript
 enableMathQuillFormulaAuthoring(quill, {
   displayHistory: true, // defaults to false
-  historyCacheKey: '__my_app_math_history_cachekey_', // optional 
+  historyCacheKey: '__my_app_math_history_cachekey_', // optional
   historySize: 20 // optional (defaults to 10)
 });
 ```
 
 This works by saving formula to a list (and local storage by default) everytime a new formula is used. Then displaying this list when a user opens the formula tooltip.
 
-![ezgif com-video-to-gif](https://user-images.githubusercontent.com/31671215/75315157-c96b5200-5816-11ea-99c2-f5414ee8e241.gif)
+<img src="https://user-images.githubusercontent.com/31671215/75315157-c96b5200-5816-11ea-99c2-f5414ee8e241.gif" width="450" alt="Demo of mathquill4quill with formula history">
 
 ### Autofocus
 
