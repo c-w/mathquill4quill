@@ -176,7 +176,7 @@ window.mathquill4quill = function(dependencies) {
           mqInput = document.createElement("span");
           applyMathquillInputStyles(mqInput);
 
-          latexInputStyle = latexInput.style.all;
+          latexInputStyle = latexInput.className;
           applyLatexInputStyles(latexInput);
 
           mqField = syncMathquillToQuill(latexInput, saveButton);
@@ -192,7 +192,7 @@ window.mathquill4quill = function(dependencies) {
 
           const latexInput = getLatexInput();
 
-          latexInput.setAttribute("style", latexInputStyle);
+          latexInput.setAttribute("class", latexInputStyle);
 
           mqInput.remove();
           mqInput = null;
