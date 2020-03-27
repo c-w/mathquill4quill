@@ -20,6 +20,7 @@
 .mathquill4quill-operator-container {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .mathquill4quill-history-button {
