@@ -42,7 +42,7 @@
     "type": "git",
     "url": "https://github.com/c-w/mathquill4quill"
   },
-  "version": "2.1.2",
+  "version": "2.2.0",
   "main": "mathquill4quill.js",
   "files": [
     "build/mathquill4quill.min.css",
