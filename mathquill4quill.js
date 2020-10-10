@@ -1,4 +1,4 @@
-/* eslint-env browser */
+/* eslint-env browser, commonjs */
 
 window.mathquill4quill = function(dependencies) {
   dependencies = dependencies || {};
@@ -378,6 +378,10 @@ window.mathquill4quill = function(dependencies) {
 
   return enableMathQuillFormulaAuthoring;
 };
+
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = window.mathquill4quill;
+}
 
 // for backwards compatibility with prototype-based API
 if (window.Quill) {

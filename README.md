@@ -44,12 +44,13 @@ enableMathQuillFormulaAuthoring(quill);
 
 ### React
 
-To integrate this module with [react-quill](https://github.com/zenoamaro/react-quill), add references to the JS and CSS files of MathQuill, KaTeX and mathquill4quill to your application. Next, you can enable the mathquill formula editor on your ReactQuill component:
+To integrate this module with [react-quill](https://github.com/zenoamaro/react-quill), add references to the JS and CSS files of MathQuill and KaTeX to your application. Next, you can enable the mathquill formula editor on your ReactQuill component:
 
 ```javascript
 import React from 'react';
 import ReactQuill, { Quill } from 'react-quill';
-const { mathquill4quill } = window;
+import mathquill4quill from 'mathquill4quill';
+import 'mathquill4quill/mathquill4quill.css';
 
 class App extends React.Component {
   reactQuill = React.createRef();
