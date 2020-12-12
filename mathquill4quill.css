@@ -8,19 +8,117 @@
 }
 
 .mathquill4quill-operator-button {
-  margin: 5px;
+  margin: 2px;
   width: 50px;
   height: 50px;
-  background-color: #fff;
-  border-color: #000;
+  background-color: afafaf;
+  border-color: #afafaf;
   border-radius: 7px;
-  border-width: 2px;
+  border-width: 0.01px;
+  font-size: medium;
+  font-weight: bolder;
+  border: none;
+}
+
+.mathquill4quill-operator-button2 {
+  margin: 2px;
+  width: 50px;
+  height: 50px;
+  background-color: #fdf2df;
+  border-color: #afafaf;
+  border-radius: 7px;
+  border-width: 0.01px;
+  font-size: medium;
+  font-weight: bolder;
+  border: none;
+}
+
+.mathquill4quill-operator-button3 {
+  margin: 2px;
+  width: 50px;
+  height: 50px;
+  background-color: #ede6f6;
+  border-color: #afafaf;
+  border-radius: 7px;
+  border-width: 0.01px;
+  font-size: medium;
+  font-weight: bolder;
+  border: none;
+}
+
+.mathquill4quill-operator-header-container a {
+  color: #444;
+  opacity: 0.5;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.selected {
+  border-style: none none solid none;
+  border-color: #f87b11;
+  color: #f87b11;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  display: inline-block;
+  margin-right: 30px;
+  padding-top: 10px;
+}
+
+.mathquill4quill-operator-header-container {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  background-color: transparent;
+  margin: 5px;
+}
+
+.mathquill4quill-operator-footer {
+  width: 450px;
+  max-height: 300px;
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
 }
 
 .mathquill4quill-operator-container {
+  min-width: 500px;
+  max-height: 250px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   flex-wrap: wrap;
+  gap: 0;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+.mathquill4quill-operator-container2 {
+  min-width: 310px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+.mathquill4quill-operator-container3 {
+  min-width: 250px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 0;
+  padding: 10px;
 }
 
 .mathquill4quill-history-button {
@@ -57,4 +155,18 @@
   padding: 0 !important;
   border: 0 !important;
   width: 0 !important;
+}
+
+.ql-tooltip .ql-editing .ql-flip::after {
+  content: none;
+}
+
+.ql-snow .ql-tooltip {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 5px #ddd;
+  color: #444;
+  padding: 5px 12px;
+  white-space: nowrap;
+  width: 500px;
 }
