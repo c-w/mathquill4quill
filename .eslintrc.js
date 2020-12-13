@@ -2,10 +2,10 @@
 
 module.exports = {
   parserOptions: {
-    ecmaVersion: 2018
+    ecmaVersion: 2018,
   },
   rules: {
-    "no-var": "error"
+    'no-var': 'error',
   },
-  extends: "eslint:recommended"
-};
+  extends: 'eslint:recommended',
+}

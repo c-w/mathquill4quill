@@ -7,7 +7,7 @@
     "lint.js": "eslint --ext js .",
     "lint.css": "stylelint \"*.css\"",
     "lint.md": "markdownlint \"*.md\"",
-    "lint.prettier": "prettier --check \"**/*.js\"",
+    "lint.prettier": "prettier --write *.js",
     "lint": "run-s lint.js lint.css lint.md lint.prettier",
     "prebuild": "mkdirp build",
     "build.babel": "babel mathquill4quill.js > build/mathquill4quill.js",

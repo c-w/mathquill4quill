@@ -1,6 +1,6 @@
 /* eslint-env node */
 
-const chromedriver = require("chromedriver");
+const chromedriver = require('chromedriver')
 
 module.exports = {
   test_settings: {
@@ -8,14 +8,14 @@ module.exports = {
       webdriver: {
         start_process: true,
         server_path: chromedriver.path,
-        port: 9515
+        port: 9515,
       },
       desiredCapabilities: {
-        browserName: "chrome",
+        browserName: 'chrome',
         chromeOptions: {
-          args: ["headless", "acceptInsecureCerts"]
-        }
-      }
-    }
-  }
-};
+          args: ['headless', 'acceptInsecureCerts'],
+        },
+      },
+    },
+  },
+}
