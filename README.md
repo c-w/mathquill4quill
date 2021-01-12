@@ -17,7 +17,7 @@ This module adds support for rich math authoring to the [Quill](http://quilljs.c
 
 ### Plain Javascript
 
-This module depends on [MathQuill](http://docs.mathquill.com/en/latest/Getting_Started/), [Quill](https://quilljs.com/docs/quickstart/) and [KaTeX](https://github.com/Khan/KaTeX#usage), so you'll need to add references to their JS and CSS files in addition to adding a reference to `mathquill4quill.js` and `mathquill4quill.css`. Official builds as well as minified assets can be found on the [releases page](https://github.com/c-w/mathquill4quill/releases).
+This module depends on [MathQuill][install-mathquill], [Quill](https://quilljs.com/docs/quickstart/) and [KaTeX][install-katex], so you'll need to add references to their JS and CSS files in addition to adding a reference to `mathquill4quill.js` and `mathquill4quill.css`. Official builds as well as minified assets can be found on the [releases page](https://github.com/c-w/mathquill4quill/releases).
 
 Next, initialize your Quill object and load the formula module:
 
@@ -44,7 +44,7 @@ enableMathQuillFormulaAuthoring(quill);
 
 ### React
 
-To integrate this module with [react-quill](https://github.com/zenoamaro/react-quill), add references to the JS and CSS files of MathQuill and KaTeX to your application. Next, you can enable the mathquill formula editor on your ReactQuill component:
+To integrate this module with [react-quill](https://github.com/zenoamaro/react-quill), add references to the JS and CSS files of [MathQuill][install-mathquill] and [KaTeX][install-katex] to your application. Next, you can enable the mathquill formula editor on your ReactQuill component:
 
 ```javascript
 import React from 'react';
@@ -74,6 +74,9 @@ class App extends React.Component {
   }
 }
 ```
+
+[install-mathquill]: http://docs.mathquill.com/en/latest/Getting_Started/#download-and-load
+[install-katex]: https://katex.org/docs/browser.html#starter-template
 
 ## Optional features
 
