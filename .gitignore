@@ -1,5 +1,6 @@
-/build
-/node_modules
+build
+node_modules
 package-lock.json
 chromedriver.log
 /tests_output
+/demo

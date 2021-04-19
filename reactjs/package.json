@@ -1,0 +1,20 @@
+{
+  "name": "reactjs",
+  "version": "0.1.0",
+  "homepage": "https://justamouse.com/mathquill4quill/reactjs",
+  "private": true,
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "katex": "^0.13.2",
+    "mathquill": "^0.10.1",
+    "mathquill4quill": "file:..",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-quill": "^1.3.5",
+    "react-scripts": "4.0.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  }
+}
