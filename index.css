@@ -1,0 +1,50 @@
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #121621;
+  text-align: center;
+}
+
+footer a {
+  color: #fff;
+  font-family: sans-serif;
+}
+
+footer p {
+  margin: 0.5em;
+}
+
+footer img {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 99999;
+  display: none;
+}
+
+main {
+  width: 100%;
+  height: 200px;
+}
+
+@media (min-width: 500px) {
+  main {
+    max-width: 400px;
+    margin: 50px auto;
+  }
+
+  footer p {
+    display: none;
+  }
+
+  footer img {
+    display: block;
+  }
+}
+
+label {
+  padding-top: 0.5em;
+  display: block;
+}

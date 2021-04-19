@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>mathquill4quill Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- KaTeX dependency -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha256-V8SV2MO1FUb63Bwht5Wx9x6PVHNa02gv8BgH/uH3ung=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha256-F/Xda58SPdcUCr+xhSGz9MA2zQBPb0ASEYKohl8UCHc=" crossorigin="anonymous"></script>
+
+    <!-- Quill dependency -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.snow.css" integrity="sha256-jyIuRMWD+rz7LdpWfybO8U6DA65JCVkjgrt31FFsnAE=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.min.js" integrity="sha256-xnX1c4jTWYY3xOD5/hVL1h37HCCGJx+USguyubBZsHQ=" crossorigin="anonymous"></script>
+
+    <!-- MathQuill dependency -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mathquill@0.10.1/build/mathquill.css" integrity="sha256-d6u6FFcCwDum5poAR2ya2efvQXKfYC2RLjJtv+ODxTI=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/mathquill@0.10.1/build/mathquill.min.js" integrity="sha256-dxKVPdWCaZTdphHQqQEc0GSDAVZJCxshwn3ZrvHtqgo=" crossorigin="anonymous"></script>
+
+    <!-- mathquill4quill include -->
+    <script src="mathquill4quill.js"></script>
+    <link rel="stylesheet" href="mathquill4quill.css">
+
+    <!-- demo page -->
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <main class="demo-container">
+      <div id="editor"></div>
+
+      <label>
+        Use custom operator buttons:
+        <input
+          type="checkbox"
+          class="option"
+          data-name="operators"
+          data-value='[["\\pm","\\pm"],["\\sqrt{x}","\\sqrt"],["\\sqrt[n]{x}","\\nthroot"],["\\frac{x}{y}","\\frac"],
+                      ["\\sum^{s}_{x}{d}", "\\sum"],["\\prod^{s}_{x}{d}", "\\prod"],["\\coprod^{s}_{x}{d}", "\\coprod"],
+                      ["\\int^{s}_{x}{d}", "\\int"],["\\binom{n}{k}", "\\binom"]]'>
+      </label>
+
+      <label>
+        Display formula history:
+        <input
+          type="checkbox"
+          class="option"
+          data-name="displayHistory"
+          data-value="true">
+      </label>
+    </main>
+
+    <footer>
+      <a href="https://github.com/c-w/mathquill4quill">
+        <p>Fork me on Github</p>
+        <img
+          width="149"
+          height="149"
+          src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149"
+          alt="Fork me on GitHub">
+        </a>
+    </footer>
+  </body>
+</html>
