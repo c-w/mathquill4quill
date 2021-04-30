@@ -6,6 +6,7 @@ import "./index.css";
 const CUSTOM_OPERATORS = [
   ["\\pm", "\\pm"],
   ["\\sqrt{x}", "\\sqrt"],
+  ["\\sqrt[3]{x}", "\\sqrt[3]{}"],
   ["\\sqrt[n]{x}", "\\nthroot"],
   ["\\frac{x}{y}", "\\frac"],
   ["\\sum^{s}_{x}{d}", "\\sum"],
