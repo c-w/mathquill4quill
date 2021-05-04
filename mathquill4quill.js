@@ -36,6 +36,13 @@ window.mathquill4quill = function(dependencies) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
   }
 
+  function isOperatorCommand(operator) {
+    if (/\[|\{|\(/.test(operator)) {
+      return false;
+    }
+    return true;
+  }
+
   function enableMathQuillFormulaAuthoring(quill, options) {
     options = options || {};
 
@@ -223,7 +230,11 @@ window.mathquill4quill = function(dependencies) {
           throwOnError: false
         });
         button.onclick = () => {
-          mqField.cmd(operator);
+          if (isOperatorCommand(operator)) {
+            mqField.cmd(operator);
+          } else {
+            mqField.write(operator);
+          }
           mqField.focus();
         };
 
