@@ -37,10 +37,7 @@ window.mathquill4quill = function(dependencies) {
   }
 
   function isOperatorCommand(operator) {
-    if (/\[|\{|\(/.test(operator)) {
-      return false;
-    }
-    return true;
+    return /^\\[A-Za-z]+$/.test(operator);
   }
 
   function enableMathQuillFormulaAuthoring(quill, options) {
