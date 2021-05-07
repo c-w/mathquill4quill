@@ -37,10 +37,7 @@ window.mathquill4quill = function(dependencies) {
   }
 
   function isOperatorCommand(operator) {
-    if (/\[|\{|\(/.test(operator)) {
-      return false;
-    }
-    return true;
+    return /^\\[A-Za-z]+$/.test(operator);
   }
 
   function enableMathQuillFormulaAuthoring(quill, options) {
@@ -225,6 +222,7 @@ window.mathquill4quill = function(dependencies) {
 
         const button = document.createElement("button");
         button.setAttribute("type", "button");
+        button.setAttribute("data-value", operator);
 
         katex.render(displayOperator, button, {
           throwOnError: false
