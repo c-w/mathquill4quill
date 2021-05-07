@@ -13,6 +13,7 @@ module.exports = {
     browser
       .useXpath()
       .click('//button[@data-value="\\sqrt[3]{}"]')
+      .waitForElementVisible('//sup[@class="mq-nthroot mq-non-leaf"]')
       .click('//a[@class="ql-action"]')
       .waitForElementVisible('//span[@class="ql-formula"]')
       .assert.attributeContains(
