@@ -12,6 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: npm install
       - run: npm --prefix=reactjs install
+      - run: npm --prefix=nextjs install
       - run: npm run demo
       - uses: peaceiris/actions-gh-pages@v3
         with:
