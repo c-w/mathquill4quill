@@ -31,7 +31,7 @@ class QuillEditor extends React.Component {
       this.reactQuill.current.editor,
       this.props.options
     );
-  };
+  }
 
   render() {
     return (

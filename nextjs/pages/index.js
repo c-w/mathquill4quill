@@ -1,6 +1,6 @@
-import Head from 'next/head';
+import Head from "next/head";
 import { useState } from "react";
-import Editor from '../src/Editor';
+import Editor from "../src/Editor";
 
 const CUSTOM_OPERATORS = [
   ["\\pm", "\\pm"],
@@ -42,7 +42,11 @@ export default function Home() {
 
         <label>
           Use custom operator buttons:
-          <input type="checkbox" className="option" onChange={toggleOperators} />
+          <input
+            type="checkbox"
+            className="option"
+            onChange={toggleOperators}
+          />
         </label>
 
         <label>
@@ -67,5 +71,5 @@ export default function Home() {
         </a>
       </footer>
     </div>
-  )
+  );
 }
