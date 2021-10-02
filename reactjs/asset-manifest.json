@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/mathquill4quill/reactjs/static/css/main.eefa42f8.chunk.css",
-    "main.js": "/mathquill4quill/reactjs/static/js/main.b591fed0.chunk.js",
-    "main.js.map": "/mathquill4quill/reactjs/static/js/main.b591fed0.chunk.js.map",
-    "runtime-main.js": "/mathquill4quill/reactjs/static/js/runtime-main.104861fe.js",
-    "runtime-main.js.map": "/mathquill4quill/reactjs/static/js/runtime-main.104861fe.js.map",
-    "static/css/2.211cb93c.chunk.css": "/mathquill4quill/reactjs/static/css/2.211cb93c.chunk.css",
-    "static/js/2.7de70c12.chunk.js": "/mathquill4quill/reactjs/static/js/2.7de70c12.chunk.js",
-    "static/js/2.7de70c12.chunk.js.map": "/mathquill4quill/reactjs/static/js/2.7de70c12.chunk.js.map",
+    "main.js": "/mathquill4quill/reactjs/static/js/main.3e9492f4.chunk.js",
+    "main.js.map": "/mathquill4quill/reactjs/static/js/main.3e9492f4.chunk.js.map",
+    "runtime-main.js": "/mathquill4quill/reactjs/static/js/runtime-main.739b3469.js",
+    "runtime-main.js.map": "/mathquill4quill/reactjs/static/js/runtime-main.739b3469.js.map",
+    "static/css/2.4cc240f2.chunk.css": "/mathquill4quill/reactjs/static/css/2.4cc240f2.chunk.css",
+    "static/js/2.cf4b9f9e.chunk.js": "/mathquill4quill/reactjs/static/js/2.cf4b9f9e.chunk.js",
+    "static/js/2.cf4b9f9e.chunk.js.map": "/mathquill4quill/reactjs/static/js/2.cf4b9f9e.chunk.js.map",
     "index.html": "/mathquill4quill/reactjs/index.html",
-    "static/css/2.211cb93c.chunk.css.map": "/mathquill4quill/reactjs/static/css/2.211cb93c.chunk.css.map",
+    "static/css/2.4cc240f2.chunk.css.map": "/mathquill4quill/reactjs/static/css/2.4cc240f2.chunk.css.map",
     "static/css/main.eefa42f8.chunk.css.map": "/mathquill4quill/reactjs/static/css/main.eefa42f8.chunk.css.map",
-    "static/js/2.7de70c12.chunk.js.LICENSE.txt": "/mathquill4quill/reactjs/static/js/2.7de70c12.chunk.js.LICENSE.txt",
-    "static/media/katex.css": "/mathquill4quill/reactjs/static/media/KaTeX_Typewriter-Regular.b6a56b14.woff",
+    "static/js/2.cf4b9f9e.chunk.js.LICENSE.txt": "/mathquill4quill/reactjs/static/js/2.cf4b9f9e.chunk.js.LICENSE.txt",
+    "static/media/katex.css": "/mathquill4quill/reactjs/static/media/KaTeX_Typewriter-Regular.9f1a86cb.woff",
     "static/media/mathquill.css": "/mathquill4quill/reactjs/static/media/Symbola.c2f28720.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.104861fe.js",
-    "static/css/2.211cb93c.chunk.css",
-    "static/js/2.7de70c12.chunk.js",
+    "static/js/runtime-main.739b3469.js",
+    "static/css/2.4cc240f2.chunk.css",
+    "static/js/2.cf4b9f9e.chunk.js",
     "static/css/main.eefa42f8.chunk.css",
-    "static/js/main.b591fed0.chunk.js"
+    "static/js/main.3e9492f4.chunk.js"
   ]
 }
