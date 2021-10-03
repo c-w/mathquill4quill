@@ -1,11 +1,7 @@
 import $ from "jquery";
 import katex from "katex";
-import "katex/dist/katex.min.css";
-import "mathquill/build/mathquill.css";
-import "mathquill4quill/mathquill4quill.css";
 import React from "react";
 import ReactQuill, { Quill } from "react-quill";
-import "react-quill/dist/quill.snow.css";
 
 if (typeof window !== "undefined") {
   window.katex = katex;

@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import { useState } from "react";
 import Editor from "../src/Editor";
 
@@ -62,7 +63,7 @@ export default function Home() {
       <footer>
         <a href="https://github.com/c-w/mathquill4quill">
           <p>Fork me on Github</p>
-          <img
+          <Image
             width="149"
             height="149"
             src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149"
