@@ -46,7 +46,7 @@ A working demo application can be found [here](./index.html) ([live](https://jus
 
 ### React
 
-A demo application integrating this module with [react-quill](https://github.com/zenoamaro/react-quill) can be found [here](./reactjs) ([live](https://justamouse.com/mathquill4quill/reactjs)).
+A demo application integrating this module with [react-quill](https://github.com/zenoamaro/react-quill) can be found [here](./reactjs) ([live](https://justamouse.com/mathquill4quill/reactjs)). A demo for [NextJS](https://nextjs.org/) can be found [here](./nextjs).
 
 ## Optional features
 
