@@ -47,7 +47,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 300px;
+  width: 318px;
   height: 150px;
   overflow: auto;
 }
@@ -57,4 +57,16 @@
   padding: 0 !important;
   border: 0 !important;
   width: 0 !important;
+}
+
+.close-button:after{
+  display: inline-block;
+  content: "\00d7";
+  padding: 7px;
+  cursor: pointer;
+}
+
+.inner-container{
+  display: flex;
+  justify-content: center;
 }

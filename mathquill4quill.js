@@ -1,6 +1,6 @@
 /* eslint-env browser, commonjs */
 
-window.mathquill4quill = function(dependencies) {
+window.mathquill4quill = function (dependencies) {
   dependencies = dependencies || {};
 
   const Quill = dependencies.Quill || window.Quill;
@@ -95,6 +95,16 @@ window.mathquill4quill = function(dependencies) {
           // eslint-disable-line no-empty
         }
       }
+    }
+
+    function removeItemToHistoryList(array, item) {
+      array.splice(item, 1)
+      try {
+        localStorage.setItem(historyCacheKey, JSON.stringify(array));
+      } catch (e) {
+        // eslint-disable-line no-empty
+      }
+
     }
 
     function getTooltip() {
@@ -277,6 +287,18 @@ window.mathquill4quill = function(dependencies) {
         button.setAttribute("class", "mathquill4quill-history-button");
       }
 
+      function applyInnerContainerStyles(container) {
+        container.setAttribute("class", "inner-container");
+      }
+
+      function applyCloseButtonStyles(button) {
+        button.setAttribute("class", "close-button");
+      }
+
+      function applyDeleteButtonTitle(button) {
+        button.setAttribute("title", "Delete");
+      }
+
       function applyHistoryContainerStyles(container) {
         container.setAttribute("class", "mathquill4quill-history-container");
       }
@@ -313,10 +335,23 @@ window.mathquill4quill = function(dependencies) {
           header.innerHTML = "Past formulas (max " + historySize + ")";
           historyDiv.appendChild(header);
 
-          history.forEach(element => {
+          history.forEach((element) => {
+            let innerContainer = document.createElement('div');
+            applyInnerContainerStyles(innerContainer)
             const button = createHistoryButton(element, mqField);
             applyHistoryButtonStyles(button);
-            container.appendChild(button);
+            innerContainer.appendChild(button);
+            const closeButton = document.createElement('div')
+            applyCloseButtonStyles(closeButton)
+            innerContainer.appendChild(closeButton);
+            container.appendChild(innerContainer)
+            applyDeleteButtonTitle(closeButton)
+            closeButton.addEventListener('click', () => {
+              const index = history.indexOf(element)
+              removeItemToHistoryList(history, index)
+              const containerToBeDeleted = document.getElementsByClassName('inner-container')
+              containerToBeDeleted[index].remove()
+            })
           });
           historyDiv.appendChild(container);
           tooltip.appendChild(historyDiv);
@@ -339,7 +374,7 @@ window.mathquill4quill = function(dependencies) {
 
       if (
         tooltip.getBoundingClientRect().top -
-          quill.container.getBoundingClientRect().top <
+        quill.container.getBoundingClientRect().top <
         0
       ) {
         tooltip.style.top = "0px";
@@ -394,7 +429,7 @@ if (typeof module !== "undefined" && module.exports) {
 
 // for backwards compatibility with prototype-based API
 if (window.Quill) {
-  window.Quill.prototype.enableMathQuillFormulaAuthoring = function(options) {
+  window.Quill.prototype.enableMathQuillFormulaAuthoring = function (options) {
     window.mathquill4quill()(this, options);
   };
 }
