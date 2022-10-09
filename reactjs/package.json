@@ -4,9 +4,9 @@
   "homepage": "https://justamouse.com/mathquill4quill/reactjs",
   "private": true,
   "dependencies": {
-    "jquery": "^3.4.1",
-    "katex": "^0.13.2",
-    "mathquill": "^0.10.1",
+    "jquery": "3.6.1",
+    "katex": "0.16.2",
+    "@edtr-io/mathquill": "0.11.0",
     "mathquill4quill": "file:..",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
