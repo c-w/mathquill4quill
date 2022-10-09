@@ -7,7 +7,7 @@ if (typeof window !== "undefined") {
   window.katex = katex;
   window.jQuery = window.$ = $;
   const mathquill4quill = require("mathquill4quill");
-  require("mathquill/build/mathquill.js");
+  require("@edtr-io/mathquill/build/mathquill.js");
 }
 
 class QuillEditor extends React.Component {

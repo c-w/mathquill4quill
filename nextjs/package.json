@@ -4,9 +4,9 @@
   "homepage": "https://justamouse.com/mathquill4quill/nextjs",
   "private": true,
   "dependencies": {
-    "jquery": "^3.6.0",
-    "katex": "^0.13.18",
-    "mathquill": "^0.10.1-a",
+    "jquery": "3.6.1",
+    "katex": "0.16.2",
+    "@edtr-io/mathquill": "0.11.0",
     "mathquill4quill": "file:..",
     "next": "11.1.2",
     "react": "17.0.2",
