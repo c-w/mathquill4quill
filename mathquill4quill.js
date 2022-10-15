@@ -97,8 +97,8 @@ window.mathquill4quill = function (dependencies) {
       }
     }
 
-    function removeItemToHistoryList(array, item) {
-      array.splice(item, 1)
+    function removeItemToHistoryList(array, index) {
+      array.splice(index, 1)
       try {
         localStorage.setItem(historyCacheKey, JSON.stringify(array));
       } catch (e) {
@@ -291,11 +291,8 @@ window.mathquill4quill = function (dependencies) {
         container.setAttribute("class", "inner-container");
       }
 
-      function applyCloseButtonStyles(button) {
+      function applyCloseButtonAttributes(button) {
         button.setAttribute("class", "close-button");
-      }
-
-      function applyDeleteButtonTitle(button) {
         button.setAttribute("title", "Delete");
       }
 
@@ -340,18 +337,22 @@ window.mathquill4quill = function (dependencies) {
             applyInnerContainerStyles(innerContainer)
             const button = createHistoryButton(element, mqField);
             applyHistoryButtonStyles(button);
-            innerContainer.appendChild(button);
-            const closeButton = document.createElement('div')
-            applyCloseButtonStyles(closeButton)
-            innerContainer.appendChild(closeButton);
-            container.appendChild(innerContainer)
-            applyDeleteButtonTitle(closeButton)
-            closeButton.addEventListener('click', () => {
-              const index = history.indexOf(element)
-              removeItemToHistoryList(history, index)
-              const containerToBeDeleted = document.getElementsByClassName('inner-container')
-              containerToBeDeleted[index].remove()
-            })
+            if (displayDeleteButtonOnHistory) {
+              innerContainer.appendChild(button);
+              const closeButton = document.createElement('div')
+              applyCloseButtonAttributes(closeButton)
+              closeButton.addEventListener('click', () => {
+                const index = history.indexOf(element)
+                removeItemToHistoryList(history, index)
+                const containerToBeDeleted = document.getElementsByClassName('inner-container')
+                containerToBeDeleted[index].remove()
+              })
+              innerContainer.appendChild(closeButton);
+              container.appendChild(innerContainer)
+            } else {
+              container.appendChild(button)
+            }
+
           });
           historyDiv.appendChild(container);
           tooltip.appendChild(historyDiv);
@@ -392,6 +393,7 @@ window.mathquill4quill = function (dependencies) {
     let historyList = fetchHistoryList(historyCacheKey);
     const historySize = options.historySize || 10;
     const displayHistory = options.displayHistory || false;
+    const displayDeleteButtonOnHistory = options.displayDeleteButtonOnHistory || false;
 
     const mqInput = newMathquillInput();
     const operatorButtons = newOperatorButtons();
