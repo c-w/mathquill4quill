@@ -338,6 +338,7 @@ window.mathquill4quill = function (dependencies) {
             const button = createHistoryButton(element, mqField);
             applyHistoryButtonStyles(button);
             if (displayDeleteButtonOnHistory) {
+              container.style.width = "318px";
               innerContainer.appendChild(button);
               const closeButton = document.createElement('div')
               applyCloseButtonAttributes(closeButton)
