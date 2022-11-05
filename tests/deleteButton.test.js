@@ -18,9 +18,10 @@ module.exports = {
       .click('//a[@class="ql-action"]')
       .waitForElementVisible('//span[@class="ql-formula"]')
       .click('//button[@class="ql-formula"]')
-      .waitForElementVisible('//div[@class="mathquill4quill-history-container"]')
+      .useCss()
+      .waitForElementVisible('.mathquill4quill-history-container')
       .execute(function () {
-        document.querySelector('.close-button').click()
+        document.querySelector('.mathquill4quill-history-delete-button').click()
         return document.querySelector('.mathquill4quill-history-button')
       }, [], function (result) {
         this.assert.equal(result.value, null)

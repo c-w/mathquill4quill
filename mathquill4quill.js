@@ -97,14 +97,13 @@ window.mathquill4quill = function (dependencies) {
       }
     }
 
-    function removeItemToHistoryList(array, index) {
+    function removeItemFromHistoryList(array, index) {
       array.splice(index, 1)
       try {
         localStorage.setItem(historyCacheKey, JSON.stringify(array));
       } catch (e) {
         // eslint-disable-line no-empty
       }
-
     }
 
     function getTooltip() {
@@ -287,17 +286,22 @@ window.mathquill4quill = function (dependencies) {
         button.setAttribute("class", "mathquill4quill-history-button");
       }
 
-      function applyInnerContainerStyles(container) {
-        container.setAttribute("class", "inner-container");
+      function applyHistoryInnerContainerStyles(container) {
+        container.setAttribute("class", "mathquill4quill-history-inner-container");
       }
 
-      function applyCloseButtonAttributes(button) {
-        button.setAttribute("class", "close-button");
+      function applyHistoryDeleteButtonStyles(button) {
+        button.setAttribute("class", "mathquill4quill-history-delete-button");
         button.setAttribute("title", "Delete");
+        button.setAttribute("role", "button");
       }
 
-      function applyHistoryContainerStyles(container) {
-        container.setAttribute("class", "mathquill4quill-history-container");
+      function applyHistoryContainerStyles(container, withDeleteButton) {
+        let className = "mathquill4quill-history-container";
+        if (withDeleteButton) {
+          className += " mathquill4quill-history-container-with-delete-button";
+        }
+        container.setAttribute("class", className);
       }
 
       function createHistoryButton(latex, mqField) {
@@ -327,33 +331,30 @@ window.mathquill4quill = function (dependencies) {
 
           historyDiv = document.createElement("div");
           let container = document.createElement("div");
-          applyHistoryContainerStyles(container);
+          applyHistoryContainerStyles(container, displayDeleteButtonOnHistory);
           let header = document.createElement("p");
           header.innerHTML = "Past formulas (max " + historySize + ")";
           historyDiv.appendChild(header);
 
           history.forEach((element) => {
-            let innerContainer = document.createElement('div');
-            applyInnerContainerStyles(innerContainer)
             const button = createHistoryButton(element, mqField);
             applyHistoryButtonStyles(button);
             if (displayDeleteButtonOnHistory) {
-              container.style.width = "318px";
-              innerContainer.appendChild(button);
-              const closeButton = document.createElement('div')
-              applyCloseButtonAttributes(closeButton)
-              closeButton.addEventListener('click', () => {
+              const innerContainer = document.createElement("div");
+              applyHistoryInnerContainerStyles(innerContainer)
+              const deleteButton = document.createElement("div")
+              applyHistoryDeleteButtonStyles(deleteButton);
+              deleteButton.addEventListener("click", () => {
+                innerContainer.remove();
                 const index = history.indexOf(element)
-                removeItemToHistoryList(history, index)
-                const containerToBeDeleted = document.getElementsByClassName('inner-container')
-                containerToBeDeleted[index].remove()
-              })
-              innerContainer.appendChild(closeButton);
-              container.appendChild(innerContainer)
+                removeItemFromHistoryList(history, index);
+              });
+              innerContainer.appendChild(button);
+              innerContainer.appendChild(deleteButton);
+              container.appendChild(innerContainer);
             } else {
-              container.appendChild(button)
+              container.appendChild(button);
             }
-
           });
           historyDiv.appendChild(container);
           tooltip.appendChild(historyDiv);
