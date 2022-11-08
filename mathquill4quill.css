@@ -63,7 +63,7 @@
   width: 0 !important;
 }
 
-.mathquill4quill-history-delete-button:after {
+.mathquill4quill-history-delete-button::after {
   display: inline-block;
   content: "\00d7";
   padding: 7px;
