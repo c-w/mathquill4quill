@@ -377,7 +377,7 @@ window.mathquill4quill = function (dependencies) {
 
       if (
         tooltip.getBoundingClientRect().top -
-        quill.container.getBoundingClientRect().top <
+          quill.container.getBoundingClientRect().top <
         0
       ) {
         tooltip.style.top = "0px";
