@@ -1,6 +1,6 @@
 /* eslint-env browser, commonjs */
 
-window.mathquill4quill = function (dependencies) {
+window.mathquill4quill = function(dependencies) {
   dependencies = dependencies || {};
 
   const Quill = dependencies.Quill || window.Quill;
