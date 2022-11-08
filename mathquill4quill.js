@@ -336,7 +336,7 @@ window.mathquill4quill = function (dependencies) {
           header.innerHTML = "Past formulas (max " + historySize + ")";
           historyDiv.appendChild(header);
 
-          history.forEach((element) => {
+          history.forEach(element => {
             const button = createHistoryButton(element, mqField);
             applyHistoryButtonStyles(button);
             if (displayDeleteButtonOnHistory) {
