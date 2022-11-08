@@ -433,7 +433,7 @@ if (typeof module !== "undefined" && module.exports) {
 
 // for backwards compatibility with prototype-based API
 if (window.Quill) {
-  window.Quill.prototype.enableMathQuillFormulaAuthoring = function (options) {
+  window.Quill.prototype.enableMathQuillFormulaAuthoring = function(options) {
     window.mathquill4quill()(this, options);
   };
 }
