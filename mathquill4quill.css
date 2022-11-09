@@ -52,9 +52,25 @@
   overflow: auto;
 }
 
+.mathquill4quill-history-container-with-delete-button {
+  width: 318px;
+}
+
 .mathquill4quill-latex-input {
   visibility: hidden !important;
   padding: 0 !important;
   border: 0 !important;
   width: 0 !important;
+}
+
+.mathquill4quill-history-delete-button::after {
+  display: inline-block;
+  content: "\00d7";
+  padding: 7px;
+  cursor: pointer;
+}
+
+.mathquill4quill-history-inner-container {
+  display: flex;
+  justify-content: space-between;
 }
