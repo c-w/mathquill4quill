@@ -19,16 +19,24 @@ const CUSTOM_OPERATORS = [
 function Index() {
   const [operators, setOperators] = useState([]);
   const [displayHistory, setDisplayHistory] = useState(false);
+  const [
+    displayDeleteButtonOnHistory,
+    setDisplayDeleteButtonOnHistory
+  ] = useState(false);
 
   const toggleDisplayHistory = event => {
     setDisplayHistory(event.target.checked);
+  };
+
+  const toggleDisplayDeleteOnHistory = event => {
+    setDisplayDeleteButtonOnHistory(event.target.checked);
   };
 
   const toggleOperators = event => {
     setOperators(event.target.checked ? CUSTOM_OPERATORS : []);
   };
 
-  const options = { displayHistory, operators };
+  const options = { displayHistory, operators, displayDeleteButtonOnHistory };
 
   return (
     <main className="demo-container">
@@ -45,6 +53,14 @@ function Index() {
           type="checkbox"
           className="option"
           onChange={toggleDisplayHistory}
+        />
+      </label>
+      <label>
+        Display delete button on formula history:
+        <input
+          type="checkbox"
+          className="option"
+          onChange={toggleDisplayDeleteOnHistory}
         />
       </label>
 

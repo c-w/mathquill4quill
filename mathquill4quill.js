@@ -97,6 +97,15 @@ window.mathquill4quill = function(dependencies) {
       }
     }
 
+    function removeItemFromHistoryList(array, index) {
+      array.splice(index, 1);
+      try {
+        localStorage.setItem(historyCacheKey, JSON.stringify(array));
+      } catch (e) {
+        // eslint-disable-line no-empty
+      }
+    }
+
     function getTooltip() {
       return quill.container.getElementsByClassName("ql-tooltip")[0];
     }
@@ -277,8 +286,25 @@ window.mathquill4quill = function(dependencies) {
         button.setAttribute("class", "mathquill4quill-history-button");
       }
 
-      function applyHistoryContainerStyles(container) {
-        container.setAttribute("class", "mathquill4quill-history-container");
+      function applyHistoryInnerContainerStyles(container) {
+        container.setAttribute(
+          "class",
+          "mathquill4quill-history-inner-container"
+        );
+      }
+
+      function applyHistoryDeleteButtonStyles(button) {
+        button.setAttribute("class", "mathquill4quill-history-delete-button");
+        button.setAttribute("title", "Delete");
+        button.setAttribute("role", "button");
+      }
+
+      function applyHistoryContainerStyles(container, withDeleteButton) {
+        let className = "mathquill4quill-history-container";
+        if (withDeleteButton) {
+          className += " mathquill4quill-history-container-with-delete-button";
+        }
+        container.setAttribute("class", className);
       }
 
       function createHistoryButton(latex, mqField) {
@@ -308,7 +334,7 @@ window.mathquill4quill = function(dependencies) {
 
           historyDiv = document.createElement("div");
           let container = document.createElement("div");
-          applyHistoryContainerStyles(container);
+          applyHistoryContainerStyles(container, displayDeleteButtonOnHistory);
           let header = document.createElement("p");
           header.innerHTML = "Past formulas (max " + historySize + ")";
           historyDiv.appendChild(header);
@@ -316,7 +342,22 @@ window.mathquill4quill = function(dependencies) {
           history.forEach(element => {
             const button = createHistoryButton(element, mqField);
             applyHistoryButtonStyles(button);
-            container.appendChild(button);
+            if (displayDeleteButtonOnHistory) {
+              const innerContainer = document.createElement("div");
+              applyHistoryInnerContainerStyles(innerContainer);
+              const deleteButton = document.createElement("div");
+              applyHistoryDeleteButtonStyles(deleteButton);
+              deleteButton.addEventListener("click", () => {
+                innerContainer.remove();
+                const index = history.indexOf(element);
+                removeItemFromHistoryList(history, index);
+              });
+              innerContainer.appendChild(button);
+              innerContainer.appendChild(deleteButton);
+              container.appendChild(innerContainer);
+            } else {
+              container.appendChild(button);
+            }
           });
           historyDiv.appendChild(container);
           tooltip.appendChild(historyDiv);
@@ -357,6 +398,8 @@ window.mathquill4quill = function(dependencies) {
     let historyList = fetchHistoryList(historyCacheKey);
     const historySize = options.historySize || 10;
     const displayHistory = options.displayHistory || false;
+    const displayDeleteButtonOnHistory =
+      options.displayDeleteButtonOnHistory || false;
 
     const mqInput = newMathquillInput();
     const operatorButtons = newOperatorButtons();
