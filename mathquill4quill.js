@@ -287,7 +287,10 @@ window.mathquill4quill = function(dependencies) {
       }
 
       function applyHistoryInnerContainerStyles(container) {
-        container.setAttribute("class", "mathquill4quill-history-inner-container");
+        container.setAttribute(
+          "class",
+          "mathquill4quill-history-inner-container"
+        );
       }
 
       function applyHistoryDeleteButtonStyles(button) {
