@@ -2,7 +2,7 @@
 /* eslint-env node */
 
 module.exports = {
-  "Is the formula editor visible": function (browser) {
+  "Is the formula editor visible": function(browser) {
     browser
       .useXpath()
       .url("http://localhost:8000/?&operators=true&displayHistory=true&displayDeleteButtonOnHistory=true")
