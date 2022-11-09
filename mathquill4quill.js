@@ -98,7 +98,7 @@ window.mathquill4quill = function(dependencies) {
     }
 
     function removeItemFromHistoryList(array, index) {
-      array.splice(index, 1)
+      array.splice(index, 1);
       try {
         localStorage.setItem(historyCacheKey, JSON.stringify(array));
       } catch (e) {
