@@ -20,12 +20,18 @@ module.exports = {
       .click('//button[@class="ql-formula"]')
       .useCss()
       .waitForElementVisible('.mathquill4quill-history-container')
-      .execute(function () {
-        document.querySelector('.mathquill4quill-history-delete-button').click()
-        return document.querySelector('.mathquill4quill-history-button')
-      }, [], function (result) {
-        this.assert.equal(result.value, null)
-      })
-      .end()
+      .execute(
+        function() {
+          document
+            .querySelector(".mathquill4quill-history-delete-button")
+            .click();
+          return document.querySelector(".mathquill4quill-history-button");
+        },
+        [],
+        function(result) {
+          this.assert.equal(result.value, null);
+        }
+      )
+      .end();
   }
 };
