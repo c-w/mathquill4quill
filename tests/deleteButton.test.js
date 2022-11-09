@@ -8,7 +8,7 @@ module.exports = {
       .url("http://localhost:8000/?&operators=true&displayHistory=true&displayDeleteButtonOnHistory=true")
       .waitForElementVisible('//*[@id="editor"]')
       .click('//button[@class="ql-formula"]')
-      .waitForElementVisible('//div[@data-mode="formula"]')
+      .waitForElementVisible('//div[@data-mode="formula"]');
   },
   "Is delete button working": function(browser) {
     browser
