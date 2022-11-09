@@ -346,7 +346,7 @@ window.mathquill4quill = function(dependencies) {
               applyHistoryDeleteButtonStyles(deleteButton);
               deleteButton.addEventListener("click", () => {
                 innerContainer.remove();
-                const index = history.indexOf(element)
+                const index = history.indexOf(element);
                 removeItemFromHistoryList(history, index);
               });
               innerContainer.appendChild(button);
