@@ -19,7 +19,7 @@ module.exports = {
       .waitForElementVisible('//span[@class="ql-formula"]')
       .click('//button[@class="ql-formula"]')
       .useCss()
-      .waitForElementVisible('.mathquill4quill-history-container')
+      .waitForElementVisible(".mathquill4quill-history-container")
       .execute(
         function() {
           document
