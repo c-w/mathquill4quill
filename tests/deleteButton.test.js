@@ -10,7 +10,7 @@ module.exports = {
       .click('//button[@class="ql-formula"]')
       .waitForElementVisible('//div[@data-mode="formula"]')
   },
-  "Is delete button working": function (browser) {
+  "Is delete button working": function(browser) {
     browser
       .useXpath()
       .click('//button[@data-value="\\sqrt"]')
