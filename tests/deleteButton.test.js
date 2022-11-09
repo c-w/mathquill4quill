@@ -5,7 +5,9 @@ module.exports = {
   "Is the formula editor visible": function(browser) {
     browser
       .useXpath()
-      .url("http://localhost:8000/?&operators=true&displayHistory=true&displayDeleteButtonOnHistory=true")
+      .url(
+        "http://localhost:8000/?&operators=true&displayHistory=true&displayDeleteButtonOnHistory=true"
+      )
       .waitForElementVisible('//*[@id="editor"]')
       .click('//button[@class="ql-formula"]')
       .waitForElementVisible('//div[@data-mode="formula"]');
