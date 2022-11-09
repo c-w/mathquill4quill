@@ -341,7 +341,7 @@ window.mathquill4quill = function(dependencies) {
             applyHistoryButtonStyles(button);
             if (displayDeleteButtonOnHistory) {
               const innerContainer = document.createElement("div");
-              applyHistoryInnerContainerStyles(innerContainer)
+              applyHistoryInnerContainerStyles(innerContainer);
               const deleteButton = document.createElement("div");
               applyHistoryDeleteButtonStyles(deleteButton);
               deleteButton.addEventListener("click", () => {
