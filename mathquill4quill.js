@@ -398,7 +398,8 @@ window.mathquill4quill = function(dependencies) {
     let historyList = fetchHistoryList(historyCacheKey);
     const historySize = options.historySize || 10;
     const displayHistory = options.displayHistory || false;
-    const displayDeleteButtonOnHistory = options.displayDeleteButtonOnHistory || false;
+    const displayDeleteButtonOnHistory =
+      options.displayDeleteButtonOnHistory || false;
 
     const mqInput = newMathquillInput();
     const operatorButtons = newOperatorButtons();
