@@ -19,7 +19,10 @@ const CUSTOM_OPERATORS = [
 function Index() {
   const [operators, setOperators] = useState([]);
   const [displayHistory, setDisplayHistory] = useState(false);
-  const [displayDeleteButtonOnHistory, setDisplayDeleteButtonOnHistory] = useState(false);
+  const [
+    displayDeleteButtonOnHistory,
+    setDisplayDeleteButtonOnHistory
+  ] = useState(false);
 
   const toggleDisplayHistory = event => {
     setDisplayHistory(event.target.checked);
