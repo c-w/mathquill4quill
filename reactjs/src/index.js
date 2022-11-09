@@ -29,7 +29,7 @@ function Index() {
   };
 
   const toggleDisplayDeleteOnHistory = event => {
-    setDisplayDeleteButtonOnHistory(event.target.checked)
+    setDisplayDeleteButtonOnHistory(event.target.checked);
   };
 
   const toggleOperators = event => {
