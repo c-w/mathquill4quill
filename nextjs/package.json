@@ -1,7 +1,6 @@
 {
   "name": "nextjs",
   "version": "0.1.0",
-  "homepage": "https://justamouse.com/mathquill4quill/nextjs",
   "private": true,
   "dependencies": {
     "jquery": "3.6.1",
@@ -15,6 +14,7 @@
   },
   "scripts": {
     "start": "next dev",
-    "build": "next build"
+    "build": "next build",
+    "postbuild": "next export"
   }
 }

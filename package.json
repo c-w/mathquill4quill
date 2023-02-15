@@ -15,6 +15,7 @@
     "demo.reactjs": "npm --prefix=reactjs run build",
     "demo.nextjs": "npm --prefix=nextjs run build",
     "postdemo.reactjs": "shx mv reactjs/build demo/reactjs",
+    "postdemo.nextjs": "shx mv nextjs/out demo/nextjs",
     "predemo": "shx mkdir -p demo",
     "demo": "run-s demo.vanillajs demo.reactjs demo.nextjs",
     "prebuild": "shx mkdir -p build",
