@@ -15,10 +15,14 @@ class QuillEditor extends React.Component {
     super(props);
     this.reactQuill = React.createRef();
     this.attachQuillRefs = this.attachQuillRefs.bind(this);
+    this.didAttachQuillRefs = false;
   }
 
   componentDidMount() {
-    this.attachQuillRefs();
+    if (!this.didAttachQuillRefs) {
+      this.attachQuillRefs();
+      this.didAttachQuillRefs = true;
+    }
   }
 
   attachQuillRefs() {

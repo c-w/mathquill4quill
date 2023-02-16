@@ -1,4 +1,4 @@
 module.exports = {
-  reactStrictMode: false,
+  reactStrictMode: true,
   basePath: "/mathquill4quill/nextjs"
 };
