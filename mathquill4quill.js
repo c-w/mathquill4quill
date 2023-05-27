@@ -214,7 +214,13 @@ window.mathquill4quill = function(dependencies) {
           }
           mqInput.remove();
           mqInput = null;
-        }
+
+          const saveButton = getSaveButton();
+          saveButton.removeEventListener("click", () => {
+            addItemToHistoryList(cacheKey);
+            removeCacheItem(cacheKey);
+          });
+        },
       };
     }
 
