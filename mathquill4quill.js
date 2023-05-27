@@ -188,6 +188,9 @@ window.mathquill4quill = function(dependencies) {
 
           mqInput = document.createElement("span");
           applyMathquillInputStyles(mqInput);
+          if (options.onBlur) {
+            mqInput.addEventListener("focusout", options.onBlur);
+          }
 
           latexInputStyle = latexInput.className;
           applyLatexInputStyles(latexInput);
@@ -204,9 +207,11 @@ window.mathquill4quill = function(dependencies) {
           }
 
           const latexInput = getLatexInput();
-
           latexInput.setAttribute("class", latexInputStyle);
 
+          if (options.onBlur) {
+            mqInput.removeEventListener("focusout", options.onBlur);
+          }
           mqInput.remove();
           mqInput = null;
         }
