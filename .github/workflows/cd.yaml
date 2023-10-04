@@ -13,6 +13,7 @@ jobs:
       - run: npm install --legacy-peer-deps
       - run: npm --prefix=reactjs install --legacy-peer-deps
       - run: npm --prefix=nextjs install --legacy-peer-deps
+      - run: npm --prefix=vuejs install
       - run: npm run demo
       - uses: peaceiris/actions-gh-pages@v3
         with:
