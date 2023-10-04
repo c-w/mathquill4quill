@@ -23,13 +23,6 @@ object-assign
  */
 
 /*!
- * The buffer module from node.js, for the browser.
- *
- * @author   Feross Aboukhadijeh <http://feross.org>
- * @license  MIT
- */
-
-/*!
  * jQuery JavaScript Library v3.6.1
  * https://jquery.com/
  *
@@ -42,8 +35,6 @@ object-assign
  *
  * Date: 2022-08-26T17:52Z
  */
-
-/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 
 /** @license React v0.20.2
  * scheduler.production.min.js
