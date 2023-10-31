@@ -6,7 +6,7 @@ import ReactQuill, { Quill } from "react-quill";
 if (typeof window !== "undefined") {
   window.katex = katex;
   window.jQuery = window.$ = $;
-  const mathquill4quill = require("mathquill4quill");
+  window.mathquill4quill = require("mathquill4quill");
   require("@edtr-io/mathquill/build/mathquill.js");
 }
 
@@ -26,7 +26,7 @@ class QuillEditor extends React.Component {
   }
 
   attachQuillRefs() {
-    const enableMathQuillFormulaAuthoring = mathquill4quill({ Quill, katex });
+    const enableMathQuillFormulaAuthoring = window.mathquill4quill({ Quill, katex });
     enableMathQuillFormulaAuthoring(
       this.reactQuill.current.editor,
       this.props.options
