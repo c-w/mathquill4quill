@@ -5,7 +5,7 @@
   "private": true,
   "dependencies": {
     "jquery": "3.6.1",
-    "katex": "0.16.2",
+    "katex": "0.16.10",
     "@edtr-io/mathquill": "0.11.0",
     "mathquill4quill": "file:..",
     "react": "^17.0.2",
